@@ -111,19 +111,19 @@
                 </td>
                 <td>
                     <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title mdl-card--expand" style="background: url('https://im1.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/094/37/0010943754.jpg&v=638dc8c7k&w=350&h=350') bottom no-repeat #9CACCD; ">
+                        <div class="mdl-card__title mdl-card--expand" style="background: url('https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/090/90/0010909025.jpg&v=619236c5k&w=375&h=375') bottom no-repeat #9CACCD; ">
                         </div>
                         <div class="mdl-card__supporting-text">
-                            <h2 class="mdl-card__title-text" style="color:#000">一本精通-LINE BOT+Python+Google Dialogflow 完整掌握LINE BOT的開發技巧 打造全方位AI機器人</h2><br>
-                            作者： OXXO（張宗彥）<br>
-                            出版社：深智數位<br>
-                            出版日期：2022/12/20<br>
+                            <h2 class="mdl-card__title-text" style="color:#000">PHP8 & MariaDB/MySQL網站開發-超威範例集</h2><br>
+                            作者： 陳惠貞, 陳俊榮<br>
+                            出版社：碁峰<br>
+                            出版日期：2021/11/25<br>
                             語言：繁體中文<br>
-                            定價：650元<br>
+                            定價：560元
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                               href="https://www.books.com.tw/products/0010943754?loc=P_0051_005" target="_blank">
+                               href="https://www.books.com.tw/products/0010909025" target="_blank">
                                 查看介紹
                             </a>
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
