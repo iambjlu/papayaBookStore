@@ -27,7 +27,7 @@
     <h3>書籍介紹</h3>
 <div class="mdl-tabs mdl-js-tabs">
     <div class="mdl-tabs__tab-bar" >
-        <a href="#tab1" class="mdl-tabs__tab is-active">程式設計工具書</a>
+        <a href="#tab1" class="mdl-tabs__tab is-active" >程式設計工具書</a>
         <a href="#tab2" class="mdl-tabs__tab">翻譯小說</a>
         <a href="#tab3" class="mdl-tabs__tab">中文小說</a>
     </div>
