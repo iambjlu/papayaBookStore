@@ -99,65 +99,54 @@ dialog.showModal();</script>';
         }
 
     }
-}
-$name = $_POST["T1"];
-$address = $_POST["T2"];
-$payment_method = $_POST["Tpay"];
+    $name = $_POST["T1"];
+    $address = $_POST["T2"];
+    $payment_method = $_POST["Tpay"];
+    $s = $_POST["s"];
 
+//隨機取數
+    $seed = time();// 使用时间作为种子源
+    srand($seed);// 播下随机数发生器种子
+    $order_number =  rand();// 根据种子生成 0~32768 之间的随机数。如果 $seed 值固定，则生成的随机数也不变
 
-function rand_num($num = '1')
-{
-    for ($i = 0; $i < $num; $i++) {
-        $n[$i] = $i;
+    $host = 'localhost';
+    $dbuser ='root';
+    $dbpassword = '';
+    $dbname = 'papaya';
+    $link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
+    if($link){
+        mysqli_query($link,'SET NAMES uff8');
+        echo "正確連接資料庫";
     }
-    for ($i = 0; $i < $num; $i++) {
-        $rand = mt_rand($i, $num - 1);
-//陣列  亂數交換下標
-        if ($n[$i] == $i) {
-            $n[$i] = $n[$rand];
-            $n[$rand] = $i;
-        }
+    else {
+        echo "不正確連接資料庫</br>" . mysqli_connect_error();
     }
-}
-$order_number = rand_num(1000000000000);
-
-$host = 'localhost';
-$dbuser ='root';
-$dbpassword = '';
-$dbname = 'papaya';
-$link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
-if($link){
-    mysqli_query($link,'SET NAMES uff8');
-    echo "正確連接資料庫";
-}
-else {
-    echo "不正確連接資料庫</br>" . mysqli_connect_error();
-}
-
-// 建立資料連接
-//$link = mysqli_connect("localhost","root");
 
 
-    // 執行 SQL 命令，新增此帳號
-// 執行 SQL 命令，新增此帳號
-$sql = "INSERT INTO order_data (order_number, name, phone,
-    address, payment_method, book_name, shipping_info) VALUES ('$order_number','$name','065128818','$address','$payment_method','$book','已送達')";
+    $sql = "INSERT INTO order_data (order_number, name, sex, phone,
+    address, payment_method, book_name) VALUES ('$order_number','$name','$s' ,'065128818','$address','$payment_method','$book')";
 
-$result = mysqli_query($link,$sql);
+    $result = mysqli_query($link,$sql);
+
+
+
+
 
 // 如果有異動到資料庫數量(更新資料庫)
-if (mysqli_affected_rows($link)>0) {
+    if (mysqli_affected_rows($link)>0) {
 // 如果有一筆以上代表有更新
 // mysqli_insert_id可以抓到第一筆的id
-    $new_id= mysqli_insert_id ($link);
-    echo "新增後的id為 {$new_id} ";
+        $new_id= mysqli_insert_id ($link);
+        echo "新增後的id為 {$new_id} ";
+    }
+    elseif(mysqli_affected_rows($link)==0) {
+        echo "無資料新增";
+    }
+    else {
+        echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+    }
 }
-elseif(mysqli_affected_rows($link)==0) {
-    echo "無資料新增";
-}
-else {
-    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-}
+
 
 ?>
 
