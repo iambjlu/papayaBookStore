@@ -37,7 +37,7 @@
              style="background: url('source/welcome_rounded.png') center no-repeat #9CACCD; ">
         </div>
         <div class="mdl-card__supporting-text">
-            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">訂購結果</h2><br>
+            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">註冊結果</h2><br>
             <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
@@ -52,52 +52,58 @@
 <?php
 
 
-
-
-    $account = $_POST["account"];
-    $password = $_POST["password"];
-    $name = $_POST["name"];
-    $sex = $_POST["sex"];
-    $phone = $_POST["phone"];
-    $address = $_POST["address"];
-
-    $host = 'localhost';
-    $dbuser ='root';
-    $dbpassword = '';
-    $dbname = 'papaya';
-$link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
-if($link){
-    mysqli_query($link,'SET NAMES uff8');
-    echo "正確連接資料庫";
+$account = $_POST["account"];
+$password = $_POST["password"];
+$name = $_POST["name"];
+$sex = $_POST["sex"];
+$sex_zhtw="";
+if($sex=="m"){
+    $sex_zhtw="先生";
+}else{
+    $sex_zhtw="小姐";
 }
-else {
-    echo "不正確連接資料庫</br>" . mysqli_connect_error();
-}
+
+$phone = $_POST["phone"];
+$address = $_POST["address"];
+
+$host = 'localhost';
+$dbuser = 'root';
+$dbpassword = '';
+$dbname = 'papaya';
+$link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
+
+//if($link){
+//    mysqli_query($link,'SET NAMES uff8');
+//    echo "正確連接資料庫";
+//}
+//else {
+//    echo "不正確連接資料庫</br>" . mysqli_connect_error();
+//}
 
 $sql = "INSERT INTO user_data (account, password, name, sex,
     phone, address) VALUES ('$account','$password','$name' ,'$sex','$phone','$address')";
 
-$result = mysqli_query($link,$sql);
-// 如果有異動到資料庫數量(更新資料庫)
-if (mysqli_affected_rows($link)>0) {
-// 如果有一筆以上代表有更新
-// mysqli_insert_id可以抓到第一筆的id
-    $new_id= mysqli_insert_id ($link);
-    echo "新增後的id為 {$new_id} ";
-}
-elseif(mysqli_affected_rows($link)==0) {
-    echo "無資料新增";
-}
-else {
-    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-}
+$result = mysqli_query($link, $sql);
+//// 如果有異動到資料庫數量(更新資料庫)
+//if (mysqli_affected_rows($link)>0) {
+//// 如果有一筆以上代表有更新
+//// mysqli_insert_id可以抓到第一筆的id
+//    $new_id= mysqli_insert_id ($link);
+//    echo "新增後的id為 {$new_id} ";
+//}
+//elseif(mysqli_affected_rows($link)==0) {
+//    echo "無資料新增";
+//}
+//else {
+//    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+//}
 
 
 ?>
 
 <script>
     let message = "<?php
-        echo $name."您好，您已註冊完成";
+        echo $name . $sex_zhtw . "您好!<br>恭喜您已註冊完成囉!";
         ?>";
     document.getElementById("card_message").innerHTML = message;
 </script>
