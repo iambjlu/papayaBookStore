@@ -16,7 +16,7 @@
 
         .demo-card-square.mdl-card {
             width: 600px;
-            height: 600px;
+            height: 700px;
         }
 
         .demo-card-square > .mdl-card__title {
@@ -29,7 +29,7 @@
 <body>
 
 
-<br><br><br><br>
+<br><br>
 <center>
     <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center">
         <div class="mdl-card__title mdl-card--expand"
@@ -37,16 +37,15 @@
         </div>
         <div class="mdl-card__supporting-text">
             <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">操作失敗</h2><br>
-            <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
+            <h2 class="mdl-card__title-text" style="color:#000;font-size: 18px;">可能的錯誤原因:</h2><br>
+            <p id="card_message" style="text-align: left;color:#000;font-size: 16px;">1.您迷路了<br>解決方案: 未正確操作<br><br>2.瀏覽器不支援Cookie<br>解決方案: 改用Edge、Chrome或Brave瀏覽器<br><br>3.瀏覽器Cookie遭到停用<br>解決方案: <br>如果使用Chrome或Brave瀏覽器，請前往瀏覽器設定，並搜尋前往「Cookie 和其他網站資料」>
+                選取「允許所有 Cookie」，並且從「一律無法使用 Cookie 的網站」清單刪除本網站<br><br>如果使用Edge瀏覽器，請前往瀏覽器設定，並搜尋前往「管理及刪除 Cookie 和網站資料」> 開啟「允許網站儲存並讀取 Cookie 資料 (建議)」，並且從「封鎖」清單刪除本網站</p>
         </div>
-        <div class="mdl-card__actions mdl-card--border">可能的錯誤原因:<br>1.使用非正確方式進入此頁面<br>解決方案:從首頁進入頁面<br><br>2.瀏覽器不支援Cookie<br>解決方案:改用Edge、Chrome或Brave瀏覽器<br><br>3.瀏覽器Cookie遭到停用<br>解決方案:如果使用Chrome或Brave瀏覽器，<br><br><br>
-            請前往<a href="chrome://settings/cookies"></a>
-            選取下列任一選項：
-            「允許所有 Cookie」。
-            「封鎖所有 Cookie (不建議)」。
-            「在無痕模式中封鎖第三方 Cookie」。
-            「封鎖第三方 Cookie」。
-            如果封鎖第三方 Cookie，其他網站的所有 Cookie 與網站資料會隨即遭到封鎖，即使這些網站已加入例外清單也一樣。</div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="index.php" target="_top">
+            回首頁
+            </a>
+        </div>
     </div>
 </center>
 </body>

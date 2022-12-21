@@ -17,7 +17,8 @@
     </style>
     <?php
     if ($_COOKIE["checkcookie"]!="訪客"){
-
+        header("location:operation_failed.php");
+        exit();
     }
     ?>
 </head>
