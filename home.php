@@ -13,18 +13,18 @@
     <style type="text/css">
         body {
             background-color: #9CACCD;
-            font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
+            font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
 
         .menu_text {
-            font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
+            font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
             color: #FFFFFF;
             font-size: 24px;
 
         }
 
         .content {
-            font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
+            font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
             font-size: 24px;
         }
 
@@ -42,10 +42,17 @@
             color: #FFDF2D;
             background-image: url(source/Rectangle%205.png);
             background-repeat: no-repeat;
-			background-size:100% 100%;
+            background-size: 100% 100%;
         }
-
     </style>
+    <?php
+    if ($_COOKIE["passed"] == "guest" || $_COOKIE["passed"] == "TRUE") {
+        echo '<script>let id=$_COOKIE["id"]</script>';
+    } else {
+        header("location:operation_failed.php");
+        exit();
+    }
+    ?>
 </head>
 
 <body>
@@ -65,16 +72,19 @@
                 <a class="mdl-navigation__link" href="introduction.php" target="imain">書籍介紹</a>
                 <a class="mdl-navigation__link" href="buy.php" target="imain">訂購書籍</a>
                 <a class="mdl-navigation__link" href="order.php" target="imain">我的訂單</a>
-                <a class="mdl-navigation__link" href="login.php" target="imain">登入/註冊</a>
+                <a class="mdl-navigation__link" href="login.php" target="imain" id="username_bar">登入/註冊</a>
                 <a class="mdl-navigation__link" href="index.php" target="_top">登出書城</a>
             </nav>
         </div>
     </header>
 
     <main class="mdl-layout__content">
+        <!-- Your content goes here -->
+
+
         <div class="page-content" background="source/Rectangle 2.png"
              style="background-repeat: no-repeat; font-size: 10px; color: #FFFFFF;">
-            <!-- Your content goes here --><br/><br/><span style="font-size: 10px"></span>
+            <br/><br/>
             <table width="99%" border="0">
                 <td width="318" height="818" align="center" valign="top" background="source/Rectangle 1.png"
                     style="background-repeat: no-repeat; font-size: 10px; color: #FFFFFF; background-size:100% 100%"><span
@@ -87,18 +97,21 @@
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="introduction.php" target="imain" class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書籍介紹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+                                        href="introduction.php" target="imain" class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書籍介紹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="buy.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;購買書籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
+                                        href="buy.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;購買書籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text 
 			background-size:100% 100%;"><a
-                                        href="order.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的訂單&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
+                                        href="order.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的訂單&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
@@ -110,20 +123,26 @@
 			background-size:100% 100%;">
                             <td id="menu_item2" height="60" align="center" class="menu_text"><a href="index.php"
                                                                                                 target="_top"><span
-                                            class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出書城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
+                                            class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出書城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            </td>
                         </tr>
                     </table>
 
                 <td width="1579" height="818" align="center" valign="top"
                     style="background-image: url(source/Rectangle%203.png);
 	background-repeat: no-repeat;
-	background-size:100% 100%;;"><div style="margin: 25px;">
-                  <iframe src="introduction.php" name="imain" width="100%" height="800px" scrolling="true"
+	background-size:100% 100%;;">
+                    <div style="margin: 25px;">
+                        <iframe src="introduction.php" name="imain" width="100%" height="800px" scrolling="true"
                                 frameborder="0"></iframe>
-                </div>
+                    </div>
                     </tr></td>
             </table>
             </center>
+            <script>
+                document.getElementById("username_bar").innerHTML = $id
+                document.getElementById("username_menu").innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + $id + `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+            </script>
         </div>
 
     </main>

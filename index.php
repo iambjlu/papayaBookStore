@@ -18,7 +18,7 @@
     </style>
     <?php
     setcookie("id", "訪客");
-    setcookie("passed", "");
+    setcookie("passed", "guest");
     ?>
 </head>
 <body>

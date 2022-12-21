@@ -45,48 +45,53 @@
 </center>
 
 <?php
-require_once("dbtools.inc.php");
-header("Content-type: text/html; charset=utf-8");
+if($_COOKIE["passed"]=="TRUE"){
+
+}
+else{
+    require_once("dbtools.inc.php");
+    header("Content-type: text/html; charset=utf-8");
 
 // 取得表單資料
-$account = $_POST["account"];
-$password = $_POST["password"];
+    $account = $_POST["account"];
+    $password = $_POST["password"];
 
 // 建立資料連接
-$link = create_connection();
+    $link = create_connection();
 
 // 檢查帳號密碼是否正確
-$sql = "SELECT * FROM user_data Where account = '$account' AND password = '$password'";
+    $sql = "SELECT * FROM user_data Where account = '$account' AND password = '$password'";
 
-$result = execute_sql($link, "papaya", $sql);
+    $result = execute_sql($link, "papaya", $sql);
 // 如果帳號密碼錯誤
-if (mysqli_num_rows($result) == 0) {
-    // 釋放 $result 佔用的記憶體
-    mysqli_free_result($result);
+    if (mysqli_num_rows($result) == 0) {
+        // 釋放 $result 佔用的記憶體
+        mysqli_free_result($result);
 
-    // 關閉資料連接
-    mysqli_close($link);
+        // 關閉資料連接
+        mysqli_close($link);
 
-    // 顯示訊息要求使用者輸入正確的帳號密碼
-    echo "<script type='text/javascript'>document.getElementById('card_message').innerHTML = '登入失敗。<br>請檢查帳號或密碼，然後再試一次。'
-document.getElementById('card_button').innerHTML = `<button class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onclick='history.back();' id='alert_btn_back'>
+        // 顯示訊息要求使用者輸入正確的帳號密碼
+        echo "<script type='text/javascript'>document.getElementById('card_message').innerHTML = '登入失敗。<br>請檢查帳號或密碼，然後再試一次。'
+document.getElementById('card_button').innerHTML = `<button class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onclick='history.back();'>
                 好
             </button>`;</script>";
 
-} else { // 如果帳號密碼正確
-    // 取得 id 欄位
-    $id = mysqli_fetch_object($result)->account;
+    } else { // 如果帳號密碼正確
+        // 取得 id 欄位
+        $id = mysqli_fetch_object($result)->account;
 
-    // 釋放 $result 佔用的記憶體
-    mysqli_free_result($result);
+        // 釋放 $result 佔用的記憶體
+        mysqli_free_result($result);
 
-    // 關閉資料連接
-    mysqli_close($link);
+        // 關閉資料連接
+        mysqli_close($link);
 
-    // 將使用者資料加入 cookies
-    setcookie("id", $id);
-    setcookie("passed", "TRUE");
-    //header("location:home.php");
+        // 將使用者資料加入 cookies
+        setcookie("id", $id);
+        setcookie("passed", "TRUE");
+        //header("location:home.php");
+    }
 }
 ?>
 
@@ -160,12 +165,12 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         echo $_SERVER['REMOTE_ADDR'];
         ?>";
     let message = "<?php
-        echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
+        echo $_COOKIE["id"] . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
         ?>" + ip;
     document.getElementById("card_message").innerHTML = message;
-    document.getElementById('card_button').innerHTML = `<button class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onclick='location.href="introduction.php"' id='alert_btn_back'>
+    document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="home.php" target="_top">
                 好
-            </button>`;
+            </a>`;
 </script>
 
 </body>

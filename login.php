@@ -16,9 +16,15 @@
         }
     </style>
     <?php
-    if ($_COOKIE["checkcookie"]!="訪客"){
-        header("location:operation_failed.php");
-        exit();
+    if ($_COOKIE["passed"]=="guest"){}
+    else{
+        if($_COOKIE["passed"]=="TRUE"){
+            header("location:login_check.php");
+            exit();
+        }else {
+            header("location:operation_failed.php");
+            exit();
+        }
     }
     ?>
 </head>
