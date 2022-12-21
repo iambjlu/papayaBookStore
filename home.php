@@ -65,7 +65,7 @@
                 <a class="mdl-navigation__link" href="buy.php" target="imain">訂購書籍</a>
                 <a class="mdl-navigation__link" href="order.php" target="imain">訂單查詢</a>
                 <a class="mdl-navigation__link" href="login.php" target="imain">登入/註冊</a>
-                <a class="mdl-navigation__link" href="index.html" target="_top">登出書城</a>
+                <a class="mdl-navigation__link" href="index.php" target="_top">登出書城</a>
             </nav>
         </div>
     </header>
@@ -107,7 +107,7 @@
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item2" height="60" align="center" class="menu_text"><a href="index.html"
+                            <td id="menu_item2" height="60" align="center" class="menu_text"><a href="index.php"
                                                                                                 target="_top"><span
                                             class="menu_text">登出書城</span></a></td>
                         </tr>

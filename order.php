@@ -11,6 +11,6 @@
 </head>
 
 <body>
-<a href="index.html">hello</a>
+<a href="index.php">hello</a>
 </body>
 </html>
