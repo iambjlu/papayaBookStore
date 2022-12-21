@@ -26,7 +26,6 @@
     </style>
 
 </head>
-
 <body>
 
 
@@ -40,11 +39,7 @@
             <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">註冊結果</h2><br>
             <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
         </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();">
-                好
-            </button>
-        </div>
+        <div class="mdl-card__actions mdl-card--border" id="card_button"></div>
     </div>
 </center>
 
@@ -52,7 +47,10 @@
 
 if ($_POST["account"] == "" || $_POST["password"] == "" || $_POST["name"] == "" || $_POST["sex"] == "" || $_POST["phone"] == "" || $_POST["address"] == "") {
     echo '<script>
-document.getElementById("card_message").innerHTML = "註冊失敗<br>請完成會員資料填寫";
+document.getElementById("card_message").innerHTML = "註冊失敗。<br>請完成會員資料填寫。";
+document.getElementById("card_button").innerHTML = `<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();" id="alert_btn_back">
+                好
+            </button>`;
 </script>';
 
 } else {
@@ -104,9 +102,16 @@ document.getElementById("card_message").innerHTML = "註冊失敗<br>請完成�
 //else {
 //    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
 //}
+
+
+
+
     }else{
         echo '<script>
-document.getElementById("card_message").innerHTML = "註冊失敗<br>兩次輸入的密碼不一致";
+    document.getElementById("card_message").innerHTML = "註冊失敗。<br>兩次輸入的密碼不一致。";
+    document.getElementById("card_button").innerHTML = `<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();" id="alert_btn_back">
+                好
+            </button>`;
 </script>';
     }
 }
@@ -114,9 +119,10 @@ document.getElementById("card_message").innerHTML = "註冊失敗<br>兩次輸�
 
 <script>
     let message = "<?php
-        echo $name . $sex_zhtw . " 您好<br>恭喜您已註冊完成囉!<br>立刻前往登入吧~";
+        echo $name ." ". $sex_zhtw . "您好<br>恭喜您已註冊完成囉!<br>立刻前往登入吧~";
         ?>";
     document.getElementById("card_message").innerHTML = message;
+    document.getElementById("card_button").innerHTML = `<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='login.php'" id="alert_btn_login">前往登入</button>`;
 </script>
 
 </body>

@@ -6,6 +6,7 @@
     <title>木瓜書城首頁</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
@@ -63,7 +64,7 @@
             <nav class="mdl-navigation mdl-layout--large-screen-only">
                 <a class="mdl-navigation__link" href="introduction.php" target="imain">書籍介紹</a>
                 <a class="mdl-navigation__link" href="buy.php" target="imain">訂購書籍</a>
-                <a class="mdl-navigation__link" href="order.php" target="imain">訂單查詢</a>
+                <a class="mdl-navigation__link" href="order.php" target="imain">我的訂單</a>
                 <a class="mdl-navigation__link" href="login.php" target="imain">登入/註冊</a>
                 <a class="mdl-navigation__link" href="index.php" target="_top">登出書城</a>
             </nav>
@@ -86,30 +87,30 @@
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="introduction.php" target="imain" class="menu_text">書籍介紹</a></td>
+                                        href="introduction.php" target="imain" class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書籍介紹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="buy.php" target="imain"><span class="menu_text">購買書籍</span></a></td>
+                                        href="buy.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;購買書籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text 
 			background-size:100% 100%;"><a
-                                        href="order.php" target="imain"><span class="menu_text">訂單查詢</span></a></td>
+                                        href="order.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的訂單&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="login.php" target="imain"><span class="menu_text">登入/註冊</span></a>
+                                        href="login.php" target="imain"><span class="menu_text" id="username_menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登入/註冊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
                             </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
                             <td id="menu_item2" height="60" align="center" class="menu_text"><a href="index.php"
                                                                                                 target="_top"><span
-                                            class="menu_text">登出書城</span></a></td>
+                                            class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出書城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a></td>
                         </tr>
                     </table>
 

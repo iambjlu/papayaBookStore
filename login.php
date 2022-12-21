@@ -15,6 +15,11 @@
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
     </style>
+    <?php
+    if ($_COOKIE["checkcookie"]!="訪客"){
+
+    }
+    ?>
 </head>
 
 <body><center>
@@ -23,7 +28,7 @@
     <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th style="text-align: left;">歡迎回來</th>
+        <th style="text-align: left;color:#000">登入即可使用本服務</th>
         <th></th>
     </tr>
     </thead>

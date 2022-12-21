@@ -15,6 +15,7 @@
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
     </style>
+
 </head>
 <body>
 <center><h3 align="center">註冊頁面</h3>
@@ -113,11 +114,12 @@
         <br><br>
         <input type="submit" name="register" id="register"
                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored"
-               value="註冊" style="font-size:x-large;width:180px;height:60px;"/><br><br><br>
-        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();">
-            返回
-        </button>
+               value="註冊" style="font-size:x-large;width:180px;height:60px;"/>
     </form>
+    <br><br>
+    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='login.php'">
+        返回
+    </button>
     <p>&nbsp;</p>
 
     <?php

@@ -10,12 +10,25 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <style type="text/css">
-
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
     </style>
+    <?php
+    // 檢查 cookie 中的 passed 變數是否等於 TRUE
+    $passed = $_COOKIE["passed"];
+
+    /* 如果 cookie 中的 passed 變數不等於 TRUE
+       表示尚未登入網站，將使用者導向首頁 index.html */
+    if ($passed != "TRUE")
+    {
+        header("location:login.php");
+        exit();
+    }
+    ?>
 </head>
+
+
 <body>
 <center>
     <h3>購物車 </h3>

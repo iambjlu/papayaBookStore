@@ -16,6 +16,10 @@
             font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
     </style>
+    <?php
+    setcookie("id", "訪客");
+    setcookie("passed", "");
+    ?>
 </head>
 <body>
 
