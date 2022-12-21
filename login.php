@@ -30,7 +30,6 @@
   </p>
 </form>
 <?php
-require_once("dbtools.inc.php");
 header("Content-type: text/html; charset=utf-8");
 
 // 取得表單資料
@@ -53,7 +52,7 @@ else {
 
 // 檢查帳號密碼是否正確
 $sql = "SELECT * FROM users Where account = '$account' AND password = '$password'";
-$result = execute_sql($link, "member", $sql);
+$result = mysqli_query($link, $sql);
 
 // 如果帳號密碼錯誤
 if (mysqli_num_rows($result) == 0)
