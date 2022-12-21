@@ -108,7 +108,7 @@ dialog.showModal();</script>';
 
 <script>
     let message = "<?php
-        echo $name . $sex_zhtw . "您好!<br>恭喜您已註冊完成囉!<br>立刻前往登入吧!";
+        echo $name . $sex_zhtw . "您好<br>恭喜您已註冊完成囉!<br>立刻前往登入吧~";
         ?>";
     document.getElementById("card_message").innerHTML = message;
 </script>
