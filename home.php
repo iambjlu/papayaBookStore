@@ -47,7 +47,7 @@
     </style>
     <?php
     if ($_COOKIE["passed"] == "guest" || $_COOKIE["passed"] == "TRUE") {
-        echo '<script>let id=$_COOKIE["id"]</script>';
+        echo '';
     } else {
         header("location:operation_failed.php");
         exit();
@@ -140,8 +140,9 @@
             </table>
             </center>
             <script>
-                document.getElementById("username_bar").innerHTML = $id
-                document.getElementById("username_menu").innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + $id + `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+                let id="<?php echo $_COOKIE["id"] ?>"
+                document.getElementById("username_bar").innerHTML = id
+                document.getElementById("username_menu").innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + id + `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
             </script>
         </div>
 

@@ -45,10 +45,9 @@
 </center>
 
 <?php
-if($_COOKIE["passed"]=="TRUE"){
-
-}
-else{
+if ($_COOKIE["passed"] == "TRUE") {
+    $id = $_COOKIE["id"];
+} else {
     require_once("dbtools.inc.php");
     header("Content-type: text/html; charset=utf-8");
 
@@ -58,10 +57,8 @@ else{
 
 // 建立資料連接
     $link = create_connection();
-
 // 檢查帳號密碼是否正確
     $sql = "SELECT * FROM user_data Where account = '$account' AND password = '$password'";
-
     $result = execute_sql($link, "papaya", $sql);
 // 如果帳號密碼錯誤
     if (mysqli_num_rows($result) == 0) {
@@ -90,7 +87,6 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         // 將使用者資料加入 cookies
         setcookie("id", $id);
         setcookie("passed", "TRUE");
-        //header("location:home.php");
     }
 }
 ?>
@@ -165,7 +161,7 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         echo $_SERVER['REMOTE_ADDR'];
         ?>";
     let message = "<?php
-        echo $_COOKIE["id"] . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
+        echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
         ?>" + ip;
     document.getElementById("card_message").innerHTML = message;
     document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="home.php" target="_top">
