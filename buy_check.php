@@ -41,10 +41,9 @@
             <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-               href="buy.php" target="imain">
+            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();">
                 好
-            </a>
+            </button>
         </div>
     </div>
 </center>
@@ -55,7 +54,7 @@
 if ($_POST["T1"]=="" || $_POST["T2"]==""){
     echo '<script>
 document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成收件資料填寫";
-dialog.showModal();</script>';
+</script>';
 
 }else {
 

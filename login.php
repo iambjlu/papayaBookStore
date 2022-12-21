@@ -1,35 +1,60 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>無標題文件</title>
-<style type="text/css">
-    body {
-        font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
-    }
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <style type="text/css">
+
+        body {
+            font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
+        }
+    </style>
 </head>
 
-<body>
-<h3 align="center">會員登錄</h3>
-<form id="form1" name="form1" method="post" action="login_check.php">
-  <div align="center"></div>
-</form>
-<form id="form2" name="form2" method="post" action="">
-  <p>帳號:
-    <label for="account"></label>
-<input type="text" name="account" id="account" />
-  </p>
-  <p>密碼: 
-    <label for="password"></label>
-    <input type="password" name="password" id="password" />
-  </p>
-  <p>
-    <input type="submit" name="login" id="login" value="登入" />
-    <input type="button" name="register" id="register" value="註冊" onclick="location.href='register.php'" />
-  </p>
-</form>
-
+<body><center>
+<h3 align="center">會員登入</h3><br>
+<form id="form2" name="form2" method="post" action="login_check.php">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+    <thead>
+    <tr>
+        <th style="text-align: left;">歡迎回來</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">帳號</span></td>
+        <td style="text-align:left">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" name="account" id="account">
+                <label class="mdl-textfield__label" for="sample2">帳號</label>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">密碼</span></td>
+        <td style="text-align:left">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" name="password" id="password">
+                <label class="mdl-textfield__label" for="sample2">密碼</label>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table><br><br>
+    <input type="submit" name="login" id="login" value="登入"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored" style="font-size:x-large;width:180px;height:60px;"/>
+    <br><br><br>
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+       href="register.php" target="imain">
+        註冊
+    </a>
+</form></center>
 
 
 
