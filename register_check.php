@@ -79,7 +79,7 @@ dialog.showModal();</script>';
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
 
 //if($link){
-//    mysqli_query($link,'SET NAMES uff8');
+//    mysqli_query($link,'SET NAMES utf8');
 //    echo "正確連接資料庫";
 //}
 //else {
