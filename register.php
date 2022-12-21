@@ -18,12 +18,12 @@
 
 </head>
 <body>
-<center><h3 align="center">註冊頁面</h3>
+<center><h3 align="center">木瓜會員註冊</h3>
     <form id="form1" name="form1" method="post" action="register_check.php">
         <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
             <thead>
             <tr>
-                <th style="text-align: left;">就快要完成囉</th>
+                <th style="text-align: left;">歡迎註冊木瓜會員</th>
                 <th></th>
             </tr>
             </thead>
@@ -45,7 +45,8 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name="account" id="account"
                                style="font-size: 16px;">
-                        <label class="mdl-textfield__label" for="sample2">建立帳號</label>
+                        <label class="mdl-textfield__label" for="sample2">建立帳號 (英數最多15字)</label>
+                        <span class="mdl-textfield__error">請輸入有效的電話</span>
                     </div>
                 </td>
             </tr>
@@ -56,7 +57,7 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" name="password" id="password"
                                style="font-size: 16px;">
-                        <label class="mdl-textfield__label" for="sample2">設定密碼</label>
+                        <label class="mdl-textfield__label" for="sample2">設定密碼 (英數8~20字)</label>
                     </div>
                 </td>
             </tr>
