@@ -11,6 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
 
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             background-color: #9CACCD;
             font-family: "Roboto","PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";

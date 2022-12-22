@@ -11,6 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
 
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
@@ -76,14 +77,16 @@
                 <td style="text-align:left"><span class="mdl-list__item-primary-content"
                                                   style="font-size: 16px;">生理性別</span></td>
                 <td style="text-align:left">
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="m">
-                        <input type="radio" name="sex" value="m" class="mdl-radio__button" checked>
-                        <span class="mdl-radio__label" style="font-size: 16px;">男</span>
-                    </label>&nbsp;&nbsp;
 
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="f">
-                        <input type="radio" name="sex" value="f" class="mdl-radio__button">
+
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                        <input type="radio" id="option-1" class="mdl-radio__button" name="sex" value="m" checked>
+                        <span class="mdl-radio__label" style="font-size: 16px;">男</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                        <input type="radio" id="option-2" class="mdl-radio__button" name="sex" value="f">
                         <span class="mdl-radio__label" style="font-size: 16px;">女</span>
+                    </label>
                     </label>
                 </td>
             </tr>

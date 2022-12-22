@@ -9,7 +9,7 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script>let card_used = "0";</script>
     <style type="text/css">
-
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }

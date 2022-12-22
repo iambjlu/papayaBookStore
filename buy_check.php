@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>訂購結果</title>
+    <title></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <style type="text/css">
-
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
@@ -113,7 +113,14 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     $name = $_POST["T1"];
     $address = $_POST["T2"];
     $payment_method = $_POST["Tpay"];
-    $s = $_POST["s"];
+    //$s = $_POST["s"];
+    $sex = $_POST["s"];
+    $sex_zhtw = "";
+    if ($sex == "m") {
+        $sex_zhtw = "先生";
+    } else {
+        $sex_zhtw = "小姐";
+    }
 
 //隨機取數
     $seed = time();// 使用时间作为种子源
@@ -125,17 +132,17 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     $dbpassword = '';
     $dbname = 'papaya';
     $link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
-    if($link){
-        mysqli_query($link,'SET NAMES uff8');
-        echo "正確連接資料庫";
-    }
-    else {
-        echo "不正確連接資料庫</br>" . mysqli_connect_error();
-    }
+//    if($link){
+//        mysqli_query($link,'SET NAMES uff8');
+//        echo "正確連接資料庫";
+//    }
+//    else {
+//        echo "不正確連接資料庫</br>" . mysqli_connect_error();
+//    }
 
 
     $sql = "INSERT INTO order_data (order_number, account, name, sex, phone,
-    address, payment_method, book_name) VALUES ('$order_number','$account','$name','$s' ,'065128818','$address','$payment_method','$book')";
+    address, payment_method, book_name) VALUES ('$order_number','$account','$name','$sex' ,'065128818','$address','$payment_method','$book')";
 
     $result = mysqli_query($link,$sql);
 
@@ -144,18 +151,18 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
 
 
 // 如果有異動到資料庫數量(更新資料庫)
-    if (mysqli_affected_rows($link)>0) {
+//    if (mysqli_affected_rows($link)>0) {
 // 如果有一筆以上代表有更新
 // mysqli_insert_id可以抓到第一筆的id
-        $new_id= mysqli_insert_id ($link);
-        echo "新增後的id為 {$new_id} ";
-    }
-    elseif(mysqli_affected_rows($link)==0) {
-        echo "無資料新增";
-    }
-    else {
-        echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-    }
+//        $new_id= mysqli_insert_id ($link);
+//        echo "新增後的id為 {$new_id} ";
+//    }
+//    elseif(mysqli_affected_rows($link)==0) {
+//        echo "無資料新增";
+//    }
+//    else {
+//        echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
+//    }
 }
 
 
@@ -165,6 +172,7 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     let message = "<?php
         echo "<b>" . $_POST["T1"] . " " . $_POST["s"];
         echo "您好! 我們已收到您的訂單</b><p>";
+        echo "訂單隨機碼︰" . $order_number . "<br>";
         echo "收件地址︰" . $_POST["T2"] . "<br>";
         echo "付款方式︰" . $_POST["Tpay"] . "<br><br>";
         echo "您買了︰<br>" . $book . "<br>";

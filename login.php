@@ -10,7 +10,7 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <style type="text/css">
-
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
@@ -80,9 +80,6 @@
 </table><br><br>
     <input type="submit" name="login" id="login" value="登入"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored" style="font-size:x-large;width:180px;height:60px;"/>
     <br><br><br>
-
-
-
 </form><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
           href="register.php" target="imain">
         註冊

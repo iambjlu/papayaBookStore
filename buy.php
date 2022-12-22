@@ -4,12 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
@@ -45,20 +44,20 @@
             </thead>
             <tbody>
             <tr>
-                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">姓名</span></td>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件人</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name="T1" id="T1">
-                        <label class="mdl-textfield__label" for="sample2">姓名</label>
+                        <label class="mdl-textfield__label" for="sample2">收件人</label>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">地址</span></td>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件地址</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name="T2" id="T2">
-                        <label class="mdl-textfield__label" for="sample2">地址</label>
+                        <label class="mdl-textfield__label" for="sample2">收件地址</label>
                     </div>
                 </td>
             </tr>
