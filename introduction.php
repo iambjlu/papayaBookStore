@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script>let login = false;</script>
+    <script>let login = false;let welcome="0"</script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
@@ -46,25 +46,37 @@
     let id = "<?php echo $_COOKIE["id"] ?>";
 
     function Snackbar() {
-        if (login == false) {
-            var notification = document.querySelector('.mdl-js-snackbar');
-            var data = {
-                message: '訪客您好，登入或註冊即可享有完整體驗',
-                actionHandler: function (event) {
-                    location.href = "login.php";
-                    top.window.location.reload();
-                },
-                actionText: '立刻前往',
-                timeout: 10000
-            };
-        }else {
-            var notification = document.querySelector('.mdl-js-snackbar');
-            var data = {
-                message: '歡迎回來，' + id,
-                actionHandler:function (event){
+        if(welcome=="1") {
+            if (login == false) {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                var data = {
+                    message: '訪客您好，登入或註冊即可享有完整體驗',
+                    actionHandler: function (event) {
+                        location.href = "login.php";
+                        top.window.location.reload();
+                    },
+                    actionText: '立刻前往',
+                    timeout: 10000
+                };
+            } else {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                var data = {
+                    message: '歡迎回來，' + id,
+                    actionHandler: function (event) {
 
+                    },
+                    actionText: ' ',
+                    timeout: 10000
+                };
+            }
+        }else{
+            var notification = document.querySelector('.mdl-js-snackbar');
+            var data = {
+                message: '都看這麼久了，心動了嗎?,
+                actionHandler:function (event){
+                    location.href = "buy.php";
                 },
-                actionText: ' ',
+                actionText: '下單去',
                 timeout: 10000
             };
         }
@@ -72,8 +84,14 @@
     }
 
     setTimeout(function() {
+        welcome="1"
         Snackbar();
     }, 500);
+
+    setTimeout(function() {
+        welcome="0"
+        Snackbar_idle();
+    }, 120000);
 </script>
 <center>
     <h3>書籍介紹</h3>

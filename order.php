@@ -47,7 +47,7 @@ $result = execute_sql($link, "papaya", $sql);
 if (mysqli_num_rows($result) == 0) {
     echo "空空如也。快去下單吧!";
 }else{
-    echo "<h3 style='font-size: 18px'>".$id."的訂單資料</h3>";
+    echo "<h3 style='font-size: 18px'>".$id." 的訂單資料</h3>";
 
     while($row=mysqli_fetch_assoc($result)){
         $order_n = $row["order_number"];
