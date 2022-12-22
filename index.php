@@ -37,15 +37,10 @@
     </div>
 </header>
 
-<center>
-  <table width="100%" border="0">
-    <tr>
-      <td width="100%" height="100%" align="center" valign="middle"><img src="source/welcome.jpg" width="1360" height="768" usemap="#Map" border="0"/>
-        <map name="Map" id="Map">
-          <area shape="rect" coords="921,548,1144,629" href="home.php"/>
-      </map></td>
-    </tr>
-  </table>
+<center><img src="source/welcome.jpg" width="1366" height="768" usemap="#Map" border="0"/>
+    <map name="Map" id="Map">
+        <area shape="rect" coords="925,548,1149,629" href="home.php"/>
+    </map>
 </center>
 
 
