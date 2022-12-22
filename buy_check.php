@@ -109,6 +109,7 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
         }
 
     }
+    $account = $_COOKIE["id"];
     $name = $_POST["T1"];
     $address = $_POST["T2"];
     $payment_method = $_POST["Tpay"];
@@ -133,8 +134,8 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     }
 
 
-    $sql = "INSERT INTO order_data (order_number, name, sex, phone,
-    address, payment_method, book_name) VALUES ('$order_number','$name','$s' ,'065128818','$address','$payment_method','$book')";
+    $sql = "INSERT INTO order_data (order_number, account, name, sex, phone,
+    address, payment_method, book_name) VALUES ('$order_number','$account','$name','$s' ,'065128818','$address','$payment_method','$book')";
 
     $result = mysqli_query($link,$sql);
 
