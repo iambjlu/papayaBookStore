@@ -83,7 +83,7 @@
                 <a class="mdl-navigation__link" href="introduction.php" target="imain">書籍介紹</a>
                 <a class="mdl-navigation__link" href="buy.php" target="imain">訂購書籍</a>
                 <a class="mdl-navigation__link" href="order.php" target="imain">我的訂單</a>
-                <a class="mdl-navigation__link" href="login.php" target="imain" id="username_bar">登入/註冊</a>
+                <a class="mdl-navigation__link" href="login.php" target="imain" id="username_bar">username</a>
                 <a class="mdl-navigation__link" href="index.php" target="_top">登出書城</a>
             </nav>
         </div>
@@ -107,34 +107,32 @@
                     <table border="0" cellspacing="10"><br/>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="introduction.php" target="imain" class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書籍介紹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <td width="280" height="60" align="center"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='introduction.php';">書籍介紹</button></a>
                             </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="buy.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;購買書籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            <td width="280" height="60" align="center"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='buy.php';">購買書籍</button></a>
                             </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item" width="280" height="60" align="center" class="menu_text 
-			background-size:100% 100%;"><a
-                                        href="order.php" target="imain"><span class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的訂單&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            <td width="280" height="60" align="center"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='order.php';">我的訂單</button></a>
                             </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item" width="280" height="60" align="center" class="menu_text"><a
-                                        href="login.php" target="imain"><span class="menu_text" id="username_menu">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登入/註冊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            <td width="280" height="60" align="center"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;text-transform: none" onclick="document.getElementById('imain').src='login.php';" id="username_menu">username</button></a>
                             </td>
                         </tr>
                         <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
 			background-size:100% 100%;">
-                            <td id="menu_item2" height="60" align="center" class="menu_text"><a href="index.php"
-                                                                                                target="_top"><span
-                                            class="menu_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出書城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+                            <td width="280" height="60" align="center"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="location.href='index.php';">登出書城</button></a>
                             </td>
                         </tr>
                     </table>
@@ -144,7 +142,7 @@
 	background-repeat: no-repeat;
 	background-size:100% 100%;;">
                     <div style="margin: 25px;">
-                        <iframe src="login.php" name="imain" width="100%" height="800px" scrolling="true"
+                        <iframe src="login.php" name="imain" id="imain" width="100%" height="800px" scrolling="true"
                                 frameborder="0"></iframe>
                     </div>
                     </tr></td>
@@ -154,7 +152,7 @@
                 let id="<?php echo $_COOKIE["id"] ?>";
 
                 document.getElementById("username_bar").innerHTML = id;
-                document.getElementById("username_menu").innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + id + `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+                document.getElementById("username_menu").innerHTML = id;
                 setTimeout(function(){
                     //homeSnackbar();
                 },500);

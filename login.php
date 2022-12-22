@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
@@ -53,8 +53,7 @@
     <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th style="text-align: left;color:#000;font-size: 16px">登入或註冊才能享有完整體驗</th>
-        <th></th>
+        <th colspan="2" style="text-align: center;color:#000;font-size: 16px">登入或註冊才能享有完整體驗</th>
     </tr>
     </thead>
     <tbody>
@@ -78,8 +77,15 @@
     </tr>
     </tbody>
 </table><br><br>
-    <input type="submit" name="login" id="login" value="登入"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored" style="font-size:x-large;width:180px;height:60px;"/>
-    <br><br><br>
+    <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可完成下單流程。</span><br><br>
+    <!--reCAPTCHA 公鑰-->
+    <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("form2").submit();
+        }
+    </script>
+    <br><br>
 </form><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
           href="register.php" target="imain">
         註冊

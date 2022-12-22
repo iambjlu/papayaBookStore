@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) == 0) {
     </tr>
     </tbody>
 </table><br><br>
-    <input type='submit' value='刪除'  class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' />
+    <input type='submit' value='取消訂單'  class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' />
 </form>
 <br><br>
 <hr/><br><br><br><br>";

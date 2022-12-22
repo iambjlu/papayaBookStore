@@ -31,17 +31,21 @@
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-
+            <a class="mdl-navigation__link" href="eula.php" target="_blank">木瓜書城使用條款</a>
             <a class="mdl-navigation__link" href="javascript: dialog.showModal();">關於木瓜書城</a>
         </nav>
     </div>
 </header>
 
 <center>
-    <br><img src="source/welcome.jpg" width="1600" height="900" usemap="#Map" border="0"/>
-    <map name="Map" id="Map">
-        <area shape="rect" coords="1085,643,1347,738" href="home.php"/>
-    </map>
+  <table width="100%" border="0">
+    <tr>
+      <td width="100%" height="100%" align="center" valign="middle"><img src="source/welcome.jpg" width="1360" height="768" usemap="#Map" border="0"/>
+        <map name="Map" id="Map">
+          <area shape="rect" coords="921,548,1144,629" href="home.php"/>
+      </map></td>
+    </tr>
+  </table>
 </center>
 
 
@@ -51,11 +55,12 @@
         <p style="color: #000"><br/>
             本網站由PHP第五小組製作<br/>
             小組成員: 周欣妤、盧柏均、陳俊翰<br/>
-            指導老師: 陳芸仙 老師
+            指導老師: 陳芸仙 老師<br />
         </p>
+        <div jsname="XZAv8" class="ITMfpb by1Bgd" style="">本網站採用 reCAPTCHA 驗證技術。<br>用戶須遵守Google《<a href="https://www.google.com/policies/privacy/" target="_blank">隱私權政策</a>》和《<a href="https://www.google.com/policies/terms/" target="_blank">使用條款</a>》的規範。</div>
     </div>
     <div class="mdl-dialog__actions">
-        <button type="buttonOK" class="mdl-button mdl-js-button mdl-button--primary" onClick="dialog.close();">好
+        <button class="mdl-button mdl-js-button mdl-button--primary" onClick="dialog.close();">好
         </button>
     </div>
 </dialog>

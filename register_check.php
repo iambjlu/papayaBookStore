@@ -10,6 +10,7 @@
     <script>let card_used = "0";</script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
@@ -44,7 +45,6 @@
 </center>
 
 <?php
-
 if ($_POST["account"] == "" || $_POST["password"] == "" || $_POST["name"] == "" || $_POST["sex"] == "" || $_POST["phone"] == "" || $_POST["address"] == "") {
     echo '<script>
 card_used="1";

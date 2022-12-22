@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
@@ -132,11 +133,15 @@
             </tr>
             </tbody>
         </table>
-        <br><br><br><br>
-
-
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored"
-               type="submit" value="下訂單" name="Btn1" style="font-size:x-large;width:240px;height:80px;"/>
+        <br><br><br><h4>步驟3: 完成下單</h4>
+        <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可完成下單流程。</span><br><br>
+        <!--reCAPTCHA 公鑰-->
+        <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
+        <script>
+            function onSubmit(token) {
+                document.getElementById("form1").submit();
+            }
+        </script>
 
         <br><br><br><br>
 

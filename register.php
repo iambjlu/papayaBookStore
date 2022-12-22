@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
 
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
     </style>
-
 </head>
 <body>
 <center><h3 align="center">木瓜會員註冊</h3>
@@ -25,7 +26,11 @@
             <thead>
             <tr>
                 <th style="text-align: left;">歡迎註冊木瓜會員</th>
-                <th></th>
+                <th>
+                    <div style="visibility: hidden"><label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+                                                           for="option-1">
+                            <input type="radio" id="not_robot" class="mdl-radio__button" name="not_robot" value="false">
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -87,7 +92,6 @@
                         <input type="radio" id="option-2" class="mdl-radio__button" name="sex" value="f">
                         <span class="mdl-radio__label" style="font-size: 16px;">女</span>
                     </label>
-                    </label>
                 </td>
             </tr>
             <tr>
@@ -115,57 +119,21 @@
             </tr>
             </tbody>
         </table>
-        <br><br>
-        <input type="submit" name="register" id="register"
-               class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored"
-               value="註冊" style="font-size:x-large;width:180px;height:60px;"/>
-    </form>
-    <br><br>
-    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='login.php'">
+        <br><br><span style="text-align: left;color:#000;font-size: 16px;">註冊即表示您閱畢並同意<a href="eula.php">使用條款</a>。<br>確認填寫資料無誤後，勾選核取方塊即可完成註冊流程。</span><br><br>
+        <!--reCAPTCHA 公鑰-->
+        <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
+        <script>
+            function onSubmit(token) {
+                document.getElementById("form1").submit();
+            }
+        </script>
+    </form><br>
+    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+            onclick="location.href='login.php'">
         返回
     </button>
     <p>&nbsp;</p>
 
-    <?php
-    //$account = $_POST["account"];
-    //$password = $_POST["password"];
-    //$name = $_POST["name"];
-    //$sex = $_POST["sex"];
-    //$phone = $_POST["phone"];
-    //$address = $_POST["address"];
-    //
-    //$host = 'localhost';
-    //$dbuser ='root';
-    //$dbpassword = '';
-    //$dbname = 'papaya';
-    //$link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
-    //if($link){
-    //    mysqli_query($link,'SET NAMES utf8');
-    //    echo "正確連接資料庫";
-    //}
-    //else {
-    //    echo "不正確連接資料庫</br>" . mysqli_connect_error();
-    //}
-    //
-    //$sql = "INSERT INTO user_data (account, password, name, sex,
-    //    phone, address) VALUES ('$account','$password','$name' ,'$sex','$phone','$address')";
-    //
-    //$result = mysqli_query($link,$sql);
-    //// 如果有異動到資料庫數量(更新資料庫)
-    //if (mysqli_affected_rows($link)>0) {
-    //// 如果有一筆以上代表有更新
-    //// mysqli_insert_id可以抓到第一筆的id
-    //    $new_id= mysqli_insert_id ($link);
-    //    echo "新增後的id為 {$new_id} ";
-    //}
-    //elseif(mysqli_affected_rows($link)==0) {
-    //    echo "無資料新增";
-    //}
-    //else {
-    //    echo "{$sql} 語法執行失敗，錯誤訊息: " . mysqli_error($link);
-    //}
-
-
-    ?></center>
+</center>
 </body>
 </html>

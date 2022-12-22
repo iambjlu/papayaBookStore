@@ -171,7 +171,7 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
 <script>
     let message = "<?php
         echo "<b>" . $_POST["T1"] . " " . $_POST["s"];
-        echo "您好! 我們已收到您的訂單</b><p>";
+        echo "您好! 我們已收到您的訂單</b><p><br>";
         echo "訂單隨機碼︰" . $order_number . "<br>";
         echo "收件地址︰" . $_POST["T2"] . "<br>";
         echo "付款方式︰" . $_POST["Tpay"] . "<br><br>";
