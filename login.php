@@ -27,15 +27,33 @@
         }
     }
     ?>
+    <script>
+        function guest_Snackbar(){
+            var notification = document.querySelector('.mdl-js-snackbar');
+            var data = {
+                message: '登入或註冊才能享有完整體驗',
+                actionHandler: function(event) {location.href = "introduction.php";},
+                actionText: '仍要以訪客繼續',
+                timeout: 3000
+            };
+            notification.MaterialSnackbar.showSnackbar(data);
+        }
+    </script>
 </head>
 
 <body><center>
 <h3 align="center">木瓜會員登入</h3><br>
+
+    <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button type="button" class="mdl-snackbar__action"></button>
+    </div>
+
 <form id="form2" name="form2" method="post" action="login_check.php">
     <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th style="text-align: left;color:#000">登入即可使用本服務</th>
+        <th style="text-align: left;color:#000;font-size: 16px">登入或註冊才能享有完整體驗</th>
         <th></th>
     </tr>
     </thead>
@@ -62,11 +80,15 @@
 </table><br><br>
     <input type="submit" name="login" id="login" value="登入"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--colored" style="font-size:x-large;width:180px;height:60px;"/>
     <br><br><br>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-       href="register.php" target="imain">
+
+
+
+</form><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          href="register.php" target="imain">
         註冊
-    </a>
-</form></center>
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               onclick='guest_Snackbar()'>以訪客身分繼續
+    </button></center>
 
 
 

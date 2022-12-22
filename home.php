@@ -10,6 +10,7 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
+    <script>let login=false;</script>
     <style type="text/css">
         body {
             background-color: #9CACCD;
@@ -46,17 +47,26 @@
         }
     </style>
     <?php
-    if ($_COOKIE["passed"] == "guest" || $_COOKIE["passed"] == "TRUE") {
-        echo '';
-    } else {
-        header("location:operation_failed.php");
-        exit();
+    if ($_COOKIE["passed"]=="guest"){
+        echo '<script>login=false;</script>';
+    }
+    else{
+        if($_COOKIE["passed"]=="TRUE"){
+            echo '<script>login=true;</script>';
+        }
+        else {
+            header("location:operation_failed.php");
+            exit();
+        }
     }
     ?>
 </head>
 
 <body>
-
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+</div>
 
 <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -133,16 +143,20 @@
 	background-repeat: no-repeat;
 	background-size:100% 100%;;">
                     <div style="margin: 25px;">
-                        <iframe src="introduction.php" name="imain" width="100%" height="800px" scrolling="true"
+                        <iframe src="login.php" name="imain" width="100%" height="800px" scrolling="true"
                                 frameborder="0"></iframe>
                     </div>
                     </tr></td>
             </table>
             </center>
             <script>
-                let id="<?php echo $_COOKIE["id"] ?>"
-                document.getElementById("username_bar").innerHTML = id
+                let id="<?php echo $_COOKIE["id"] ?>";
+
+                document.getElementById("username_bar").innerHTML = id;
                 document.getElementById("username_menu").innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + id + `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+                setTimeout(function(){
+                    //homeSnackbar();
+                },500);
             </script>
         </div>
 

@@ -37,7 +37,7 @@
              style="background: url('source/welcome_rounded.png') center no-repeat #9CACCD; ">
         </div>
         <div class="mdl-card__supporting-text">
-            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">登入結果</h2><br>
+            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">木瓜會員</h2><br>
             <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
         </div>
         <div class="mdl-card__actions mdl-card--border" id="card_button"></div>
@@ -87,6 +87,8 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         // 將使用者資料加入 cookies
         setcookie("id", $id);
         setcookie("passed", "TRUE");
+        echo '<script>top.window.location.reload();</script>';
+
     }
 }
 ?>
@@ -164,7 +166,7 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
         ?>" + ip;
     document.getElementById("card_message").innerHTML = message;
-    document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="home.php" target="_top">
+    document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="introduction.php" target="imain">
                 好
             </a>`;
 </script>

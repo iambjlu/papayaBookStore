@@ -22,9 +22,7 @@
     ?>
 </head>
 <body>
-
 <header class="mdl-layout__header">
-
     <div class="mdl-layout__header-row">
         <!-- Title -->
         <span class="mdl-layout-title">歡迎來到木瓜書城</span>

@@ -185,7 +185,7 @@ document.getElementById("card_button").innerHTML = `<button class="mdl-button md
             echo $name . " " . $sex_zhtw . "您好<br>恭喜您已註冊完成囉!<br>立刻前往登入吧~";
             ?>";
         document.getElementById("card_message").innerHTML = message;
-        document.getElementById("card_button").innerHTML = `<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='login.php'" id="alert_btn_login">前往登入</button>`;
+        document.getElementById("card_button").innerHTML = `<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='login.php'">前往登入</button>`;
     }
 </script>
 
