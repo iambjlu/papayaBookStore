@@ -23,6 +23,19 @@
 </head>
 
 <body>
-<a href="index.php">hello</a>
+<div align="center">
+  <h1>查詢訂單</h1>
+  <h3>您的訂單</h3>
+</div>
+<?php
+//建立資料庫連接
+require_once("dbtools.inc.php");
+header("Content-type: text/html; charset=utf-8");
+$link = create_connection();
+if("SELECT * FROM order_data WHERE name = '$id'")
+$id =  $_COOKIE["id"];
+$sql = "SELECT * FROM order_data WHERE name = '$id'";
+$result = execute_sql($link, "papaya", $sql);
+?>
 </body>
 </html>
