@@ -74,6 +74,14 @@
             <tbody>
             <tr>
                 <td style="text-align:left"><span class="mdl-list__item-primary-content"
+                                                  style="font-size: 16px;">帳號</span></td>
+                <td style="text-align:left">
+                    <span class="mdl-list__item-primary-content"
+                          style="font-size: 16px;"><?php echo $_COOKIE["id"] ?></span></td>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left"><span class="mdl-list__item-primary-content"
                                                   style="font-size: 16px;">姓名</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -83,14 +91,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td style="text-align:left"><span class="mdl-list__item-primary-content"
-                                                  style="font-size: 16px;">帳號</span></td>
-                <td style="text-align:left">
-                    <span class="mdl-list__item-primary-content"
-                          style="font-size: 16px;"><?php echo $_COOKIE["id"] ?></span></td>
-                </td>
-            </tr>
+
             <tr>
                 <td style="text-align:left"><span class="mdl-list__item-primary-content"
                                                   style="font-size: 16px;">設定新密碼</span><br><span
@@ -151,7 +152,7 @@
         </table>
         <br><br>
         <span style="text-align: left;color:#000;font-size: 16px;">更動會員資料需要驗證目前密碼。<br>確認填寫資料無誤後，勾選核取方塊即可完成修改。</span><br><br>
-        <form id="form2" name="form2" method="post" action="login_check.php">
+        <form id="form1" name="form1" method="post" action="revise_check.php">
             <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                 <tbody>
                 <tr>
@@ -181,7 +182,7 @@
         <br>
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                 onclick="history.back();">
-            返回
+            取消
         </button>&nbsp;&nbsp;
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                 onclick="
@@ -201,7 +202,7 @@
                     };
                     notification.MaterialSnackbar.showSnackbar(data);
                 }
-            ">刪除會員資料
+            ">刪除會員帳號
         </button>
         <p>&nbsp;</p>
 

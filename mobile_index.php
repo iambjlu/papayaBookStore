@@ -22,10 +22,10 @@
                 document.location.href = "index.php";
             } else {
                 var userAgent=navigator.userAgent.toLowerCase();
-                if(userAgent.toString().includes("iphone")){
-                    document.getElementById("webapp_btn").innerHTML=`<button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;width:280px;text-transform: none;font-size: 16px;" onclick='location.href="iphone.php"'>設置 iOS WebAPP</button>`
-                }else{
+                if(userAgent.toString().includes("linux")){
                     document.getElementById("webapp_btn").innerHTML=`<button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;width:280px;text-transform: none;font-size: 16px;" onclick='location.href="android.php"'>設置 Android WebApp</button>`
+                }else{
+                    document.getElementById("webapp_btn").innerHTML=`<button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;width:280px;text-transform: none;font-size: 16px;" onclick='location.href="iphone.php"'>設置 iOS WebAPP</button>`
                 }
             }
         }

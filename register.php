@@ -18,6 +18,12 @@
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
+        a{
+            text-decoration: none;
+        }
+        a:visited{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>

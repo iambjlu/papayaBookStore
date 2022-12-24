@@ -40,11 +40,11 @@
 
     <h3>我的訂單</h3>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
-        <input type="radio" id="option1" class="mdl-radio__button" name="options" value="1" checked>
+        <input type="radio" id="option1" class="mdl-radio__button" name="options" value="1" onclick="location.href='order.php'" >
         <span class="mdl-radio__label">從新到舊排序</span>
     </label>&nbsp;&nbsp;
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
-        <input type="radio" id="option2" class="mdl-radio__button" name="options" value="2" onclick="location.href='order_reverse.php'">
+        <input type="radio" id="option2" class="mdl-radio__button" name="options" value="2" checked>
         <span class="mdl-radio__label">從舊到新排序</span>
     </label>&nbsp;
 <?php
@@ -55,7 +55,7 @@ $link = create_connection();
 $id =  $_COOKIE["id"];
 ?>
 
-    <?php $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time DESC";
+    <?php $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time ASC";
     $result = execute_sql($link, "papaya", $sql); ?>
 
 

@@ -23,31 +23,72 @@
         .demo-card-square > .mdl-card__title {
             color: #FFF;
         }
+        a{
+            text-decoration: none;
+        }
+        a:visited{
+            text-decoration: none;
+        }
     </style>
+</head>
+
+<body>
+
+<script>
+    let id = "<?php echo $_COOKIE["id"] ?>";
+    setTimeout(function() {
+        var notification = document.querySelector('.mdl-js-snackbar');
+        var data = {
+            message: '都看這麼久了，心動了嗎?',
+            actionHandler:function (event){
+                location.href = "buy.php";
+            },
+            actionText: '下單去',
+            timeout: 60000
+        };
+        notification.MaterialSnackbar.showSnackbar(data);
+    }, 120000);
+</script>
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+</div>
+<center>
+    <h3>書籍介紹</h3>
     <?php
     if ($_COOKIE["passed"] == "guest") {
         echo '<script>login=false;</script>';
+        echo '<a href="login.php">登入</a>以獲得專屬推薦';
     } else {
         if ($_COOKIE["passed"] == "TRUE") {
             echo '<script>login=true;</script>';
+            require_once("dbtools.inc.php");
+            header("Content-type: text/html; charset=utf-8");
+            $link = create_connection();
+            $id = $_COOKIE["id"];
+            // 檢查帳號是否有人申請
+            $sql = "SELECT * FROM user_data WHERE account = '$id'";
+            $result = execute_sql($link, "papaya", $sql);
+
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $sex = $row["sex"];
+                if ($sex == "m") {
+                    echo '推薦你看 程式設計、翻譯小說';
+                } else {
+                    echo '推薦妳看 中文小說、翻譯小說';
+                }
+            }
+
+            mysqli_free_result($result);
+            mysqli_close($link);
         } else {
             header("location:operation_failed.php");
             exit();
         }
     }
     ?>
-</head>
-
-<body>
-<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button type="button" class="mdl-snackbar__action"></button>
-</div>
-<script>
-    let id = "<?php echo $_COOKIE["id"] ?>";
-
-    function Snackbar() {
-        if(welcome=="1") {
+    <script>setTimeout(function() {
             if (login == false) {
                 var notification = document.querySelector('.mdl-js-snackbar');
                 var data = {
@@ -70,32 +111,9 @@
                     timeout: 10000
                 };
             }
-        }else{
-            var notification = document.querySelector('.mdl-js-snackbar');
-            var data = {
-                message: '都看這麼久了，心動了嗎?,
-                actionHandler:function (event){
-                    location.href = "buy.php";
-                },
-                actionText: '下單去',
-                timeout: 10000
-            };
-        }
-        notification.MaterialSnackbar.showSnackbar(data);
-    }
 
-    setTimeout(function() {
-        welcome="1"
-        Snackbar();
-    }, 500);
-
-    setTimeout(function() {
-        welcome="0"
-        Snackbar_idle();
-    }, 120000);
-</script>
-<center>
-    <h3>書籍介紹</h3>
+            notification.MaterialSnackbar.showSnackbar(data);
+        }, 1000);</script>
     <div class="mdl-tabs mdl-js-tabs" align="center">
         <div class="mdl-tabs__tab-bar" align="center">
             <a href="#coding" class="mdl-tabs__tab is-active" style="font-size: 16px">程式設計</a>
@@ -309,7 +327,7 @@
                                  style="background: url('https://im1.book.com.tw/image/getImage?i=https://www.books.com.tw/img/001/063/78/0010637846.jpg&v=5ab2347ek&w=390&h=390') bottom no-repeat #9CACCD; ">
                             </div>
                             <div class="mdl-card__supporting-text">
-                                <h2 class="mdl-card__title-text" style="color:#000">火星任務 The Martian</h2><br>
+                                <h2 class="mdl-card__title-text" style="color:#000">火星任務 (The Martian)</h2><br>
                                 作者： 安迪‧威爾<br>
                                 譯者： 翁雅如<br>
                                 出版社：三采<br>

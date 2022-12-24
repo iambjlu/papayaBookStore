@@ -99,7 +99,7 @@
 
         <div class="page-content" background="source/Rectangle 2.png"
              style="background-repeat: no-repeat; font-size: 10px; color: #FFFFFF;">
-            <br/><br/>
+
             <table width="99%" border="0">
                 <td width="318" height="818" align="center" valign="top" background="source/Rectangle 1.png"
                     style="background-repeat: no-repeat; font-size: 10px; color: #FFFFFF; background-size:100% 100%"><span

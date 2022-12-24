@@ -10,9 +10,11 @@
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>function onSubmit(token) {
-            location.href="del_user_finish.php";
-        }</script>
+
+    <script>
+        let id = "<?php echo $_COOKIE["id"] ?>";
+        let message="我不是機器人，我想要刪除我的木瓜會員帳號"+id+"。";
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -23,7 +25,7 @@
         }
 
         .demo-card-square.mdl-card {
-            width: 400px;
+            width: 500px;
             height: 600px;
         }
 
@@ -44,6 +46,40 @@
 </head>
 
 <body>
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button></div>
+<script>
+    function onSubmit(token) {
+        if (message == form1.check_input.value){
+            location.href='del_user_finish.php'
+        }else {
+            var notification = document.querySelector('.mdl-js-snackbar');
+            var data = {
+                message: '輸入錯誤，你不是真的想刪除帳號。',
+                actionHandler: function (event) {
+                    location.href='introduction.php'
+                },
+                actionText: '回首頁',
+                timeout: 3000
+            };
+            notification.MaterialSnackbar.showSnackbar(data);
+            setTimeout(function() {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                var data = {
+                    message: '你要重新驗證嗎?',
+                    actionHandler: function (event) {
+                        location.href='del_user_check.php'
+                    },
+                    actionText: '重新驗證',
+                    timeout: 3000
+                };
+                notification.MaterialSnackbar.showSnackbar(data);
+            }, 3000);
+
+        }
+    }
+</script>
 <br><br><br><br>
 <center>
     <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center">
@@ -52,8 +88,17 @@
         </div>
         <div class="mdl-card__supporting-text">
             <h2 class="mdl-card__title-text" style="color:#F00;font-size: x-large;font-weight: bold">警告</h2><br>
-            <p style="text-align: left;color:#F00;font-size: 16px;">確定要刪除會員帳號嗎?<br>此動作不可逆。<br>若要繼續，請勾選核取方塊。</p><br>
-            <div class='g-recaptcha' data-sitekey='6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_' data-callback="onSubmit"></div>
+            <p style="text-align: left;color:#F00;font-size: 16px;">確定要刪除會員帳號嗎?<br>請謹慎考慮，此動作不可逆。</p>
+            <p style="text-align: left;color:#000;font-size: 16px;">若要繼續，請輸入下方文字後，再勾選核取方塊。</p><br>
+            <form id="form1" name="form1" method="post" action="register_check.php">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;alignment: center">
+                <input class="mdl-textfield__input" type="text" name="del_label"
+                       id="check_input" style="color:#000;">
+                <label class="mdl-textfield__label" for="sample2" id='check_label'  >我不是機器人，我想要刪除我的木瓜會員帳號id。</label>
+                <script>document.getElementById('check_label').innerText=message;</script>
+            </div></form>
+            <div class='g-recaptcha' data-sitekey='6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_' data-callback="onSubmit" ></div>
+            <script></script>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class='mdl-button mdl-js-button mdl-button--primary' href="revise.php" style="font-size: x-large">取消</a>
