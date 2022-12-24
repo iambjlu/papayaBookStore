@@ -64,7 +64,7 @@
     <button type="button" class="mdl-snackbar__action"></button>
 </div>
 <center><h3 align="center">修改會員資料</h3>
-    <form id="form1" name="form1" method="post" action="register_check.php">
+    <form id="form1" name="form1" method="post" action="revise_check.php">
         <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
             <thead>
             <tr>

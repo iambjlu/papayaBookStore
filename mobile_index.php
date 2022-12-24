@@ -16,26 +16,20 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
     <script>let login = false;
 
+
         function AutoOrientate() {
             if (screen.width >= screen.height) {
                 document.location.href = "index.php";
             } else {
-
+                var userAgent=navigator.userAgent.toLowerCase();
+                if(userAgent.toString().includes("iphone")){
+                    document.getElementById("webapp_btn").innerHTML=`<button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;width:280px;text-transform: none;font-size: 16px;" onclick='location.href="iphone.php"'>設置 iOS WebAPP</button>`
+                }else{
+                    document.getElementById("webapp_btn").innerHTML=`<button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;width:280px;text-transform: none;font-size: 16px;" onclick='location.href="android.php"'>設置 Android WebApp</button>`
+                }
             }
-            setTimeout(function () {
-                if(window.navigator.standalone==true){}else{
-                    var notification = document.querySelector('.mdl-js-snackbar');
-                    var data = {
-                        message: '我們有Web App唷',
-                        actionHandler: function (event) {
-                            location.href = "webapp_guide.php";
-                        },
-                        actionText: '安裝教學',
-                        timeout: 10000
-                    };
-                    notification.MaterialSnackbar.showSnackbar(data);
-                }, 500);
-        }</script>
+        }
+            </script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -89,23 +83,13 @@
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
 </div>
-
 <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 
     <main class="mdl-layout__content">
         <!-- Your content goes here -->
-        <script>
-            let id = "<?php echo $_COOKIE["id"] ?>";
-            document.getElementById("username_bar").innerHTML = id;
-            document.getElementById("username_menu").innerHTML = id;
-            setTimeout(function () {
-                //homeSnackbar();
-            }, 500);
-        </script>
         <br>
-
         <table width="360" border="0" align="center">
             <tr>
                 <td width="360" height="500" align="center" valign="top" background="source/Rectangle 1.png"
@@ -144,6 +128,9 @@
                                         onclick="dialog.showModal();">關於木瓜書城
                                 </button>
                             </td>
+                        </tr>
+                        <tr>
+                            <td id="webapp_btn"></td>
                         </tr>
                     </table>
                     <br><br>

@@ -151,15 +151,29 @@
             <tbody>
             <tr>
                 <td style="text-align:left">
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Book[700]">
-                        <input type="checkbox" name="Book[700]" value="Python零基礎最強入門之路-王者歸來 　　　NT.700"
-                               id="Book[700]" class="mdl-checkbox__input">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="booka1t">
+                        <input type="checkbox" name="booka1t" id="booka1t" value="Python零基礎最強入門之路-王者歸來" class="mdl-checkbox__input">
                         <span class="mdl-checkbox__label" style="font-size: 16px;">Python零基礎最強入門之路-王者歸來</span>
                     </label></td>
                 <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">NT$ 700</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="B5" id="B5" style="font-size: 16px;">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="booka1n" style="font-size: 16px;">
+                        <label class="mdl-textfield__label" for="sample2">購買數量</label>
+                        <span class="mdl-textfield__error">請輸入數字</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="booka2t">
+                        <input type="checkbox" name="booka2t" id="booka2t" value="Python零基礎最強入門之路-王者歸來" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label" style="font-size: 16px;">Python零基礎最強入門之路-王者歸來</span>
+                    </label></td>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">NT$ 700</span></td>
+                <td style="text-align:left">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="booka2n" style="font-size: 16px;">
                         <label class="mdl-textfield__label" for="sample2">購買數量</label>
                         <span class="mdl-textfield__error">請輸入數字</span>
                     </div>

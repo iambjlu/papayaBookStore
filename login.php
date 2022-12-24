@@ -83,7 +83,7 @@
     </tr>
     </tbody>
 </table><br><br>
-    <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可登入。</span><br><br>
+    <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可登入。若忘記密碼請洽管理員重置。</span><br><br>
     <!--reCAPTCHA 公鑰-->
     <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
     <script>

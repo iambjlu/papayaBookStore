@@ -83,7 +83,7 @@
         setTimeout(function() {
             let id = "<?php echo $_COOKIE["id"] ?>";
             document.getElementById("username").innerHTML = id;
-        }, 1);
+        }, 100);
     </script><br><br<br />
 
     <table width="360" border="0" align="center">
