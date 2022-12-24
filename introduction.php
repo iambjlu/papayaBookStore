@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script>let login = false;let welcome="0"</script>
     <style type="text/css">
@@ -95,8 +96,8 @@
 </script>
 <center>
     <h3>書籍介紹</h3>
-    <div class="mdl-tabs mdl-js-tabs">
-        <div class="mdl-tabs__tab-bar">
+    <div class="mdl-tabs mdl-js-tabs" align="center">
+        <div class="mdl-tabs__tab-bar" align="center">
             <a href="#coding" class="mdl-tabs__tab is-active" style="font-size: 16px">程式設計</a>
             <a href="#translated_novel" class="mdl-tabs__tab" style="font-size: 16px">翻譯小說</a>
             <a href="#chinese_novel" class="mdl-tabs__tab" style="font-size: 16px">中文小說</a>
@@ -107,7 +108,7 @@
                     <td>
                         <div class="demo-card-square mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-card--expand"
-                                 style="background: url('http://www.deepstone.com.tw/files/file_pool/2/0J219225619428911631/XB1828.jpg') bottom no-repeat #9CACCD; ">
+                                 style="background: url('https://flipclass.stust.edu.tw/sysdata/attach/note.2792/f78fb93b19ca39a8399a4ef8c484114b.jpg') bottom no-repeat #9CACCD; ">
                             </div>
                             <div class="mdl-card__supporting-text">
                                 <h2 class="mdl-card__title-text" style="color:#000">

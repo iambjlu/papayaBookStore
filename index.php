@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>let login = false;
+        function AutoOrientate() {
+            if (screen.width >= screen.height) {
+            } else {
+                document.location.href = "mobile_index.php";
+            }
+        }</script>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         body {
@@ -22,7 +28,7 @@
     setcookie("passed", "guest");
     ?>
 </head>
-<body>
+<body onload="AutoOrientate()">
 <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
         <!-- Title -->
@@ -37,7 +43,7 @@
     </div>
 </header>
 
-<center><img src="source/welcome.jpg" width="1366" height="768" usemap="#Map" border="0"/>
+<center><br><img src="source/welcome.jpg" width="1366" height="768" usemap="#Map" border="0"/>
     <map name="Map" id="Map">
         <area shape="rect" coords="925,548,1149,629" href="home.php"/>
     </map>

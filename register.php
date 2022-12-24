@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+
+    <title>木瓜書城</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -26,11 +27,7 @@
             <thead>
             <tr>
                 <th style="text-align: left;">歡迎註冊木瓜會員</th>
-                <th>
-                    <div style="visibility: hidden"><label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
-                                                           for="option-1">
-                            <input type="radio" id="not_robot" class="mdl-radio__button" name="not_robot" value="false">
-                </th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -52,7 +49,6 @@
                         <input class="mdl-textfield__input" type="text" name="account" id="account"
                                style="font-size: 16px;">
                         <label class="mdl-textfield__label" for="sample2">建立帳號 (英數最多15字)</label>
-                        <span class="mdl-textfield__error">請輸入有效的電話</span>
                     </div>
                 </td>
             </tr>

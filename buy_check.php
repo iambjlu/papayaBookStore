@@ -3,9 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <style type="text/css">
@@ -139,10 +141,14 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
 //    else {
 //        echo "不正確連接資料庫</br>" . mysqli_connect_error();
 //    }
-
-
+    date_default_timezone_set('Asia/Taipei');
+    $time = date('Y/m/d H:i:s');
+    //$time = "SELECT NOW() FROM order_data";
+    //$time = `Select Getdate()`;
+    //echo "$time";
     $sql = "INSERT INTO order_data (order_number, account, name, sex, phone,
-    address, payment_method, book_name) VALUES ('$order_number','$account','$name','$sex' ,'065128818','$address','$payment_method','$book')";
+    address, payment_method, book_name,time) VALUES ('$order_number','$account','$name','$sex' ,'065128818','$address','$payment_method','$book','$time')";
+
 
     $result = mysqli_query($link,$sql);
 

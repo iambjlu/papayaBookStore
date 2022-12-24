@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -24,7 +24,20 @@
         }
 
     </style>
+    <?php
+    if ($_COOKIE["passed"]=="guest"){
+        //header("location:login.php");
+       // exit();
+       }
+    else{
+        if($_COOKIE["passed"]=="TRUE"){
 
+        }else {
+            header("location:operation_failed.php");
+            exit();
+        }
+    }
+    ?>
 </head>
 
 <body>
@@ -70,9 +83,9 @@ if ($_COOKIE["passed"] == "TRUE") {
 
         // 顯示訊息要求使用者輸入正確的帳號密碼
         echo "<script type='text/javascript'>document.getElementById('card_message').innerHTML = '登入失敗。<br>請檢查帳號或密碼，然後再試一次。'
-document.getElementById('card_button').innerHTML = `<button class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onclick='history.back();'>
+document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href='login.php';'>
                 好
-            </button>`;</script>";
+            </a>`;</script>";
 
     } else { // 如果帳號密碼正確
         // 取得 id 欄位
@@ -87,7 +100,11 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
         // 將使用者資料加入 cookies
         setcookie("id", $id);
         setcookie("passed", "TRUE");
-        echo '<script>top.window.location.reload();</script>';
+        echo '<script>
+if (screen.width >= screen.height) {
+        top.window.location.reload();
+}
+</script>';
 
     }
 }
@@ -159,16 +176,24 @@ document.getElementById('card_button').innerHTML = `<button class='mdl-button md
 //?>
 
 <script>
-    let ip = "<?php
-        echo $_SERVER['REMOTE_ADDR'];
-        ?>";
+    let ip = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
+    if(ip=="::1"){
+        ip="ngrok.io 或 localhost"
+    }
     let message = "<?php
         echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
         ?>" + ip;
     document.getElementById("card_message").innerHTML = message;
-    document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="introduction.php" target="imain">
+    if (screen.width >= screen.height) {
+        document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="introduction.php" target="imain">
                 好
             </a>`;
+    } else {
+        document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="mobile.php">
+                好
+            </a>`;
+    }
+
 </script>
 
 </body>

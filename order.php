@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -50,6 +50,8 @@ if (mysqli_num_rows($result) == 0) {
     echo "<h3 style='font-size: 18px'>".$id." 的訂單資料</h3>";
 
     while($row=mysqli_fetch_assoc($result)){
+
+
         $order_n = $row["order_number"];
 
         echo "
