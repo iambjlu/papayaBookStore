@@ -10,9 +10,7 @@
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>function onSubmit(token) {
-            location.href="del_user_finish.php";
-        }</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -32,18 +30,26 @@
         }
 
     </style>
+
     <?php
-    // 檢查 cookie 中的 passed 變數是否等於 TRUE
-    $passed = $_COOKIE["passed"];
-    /* 如果 cookie 中的 passed 變數不等於 TRUE
-       表示尚未登入網站，將使用者導向首頁 index.html */
-    if ($passed != "TRUE") {
-        header("location:login.php");
-        exit();
-    }?>
+    require_once("dbtools.inc.php");
+    $id = $_COOKIE["id"];
+    $link = create_connection();
+
+    $sql = "DELETE FROM user_data where account = '$id'";
+    $result = execute_sql($link, "papaya", $sql);
+
+    mysqli_close($link);
+    ?>
+
 </head>
 
 <body>
+<script>
+    setTimeout(function() {
+        top.window.location.href='index.php';
+    }, 3000);
+</script>
 <br><br><br><br>
 <center>
     <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center">
@@ -51,16 +57,17 @@
              style="background: url('source/welcome_rounded.png') center no-repeat #9CACCD; ">
         </div>
         <div class="mdl-card__supporting-text">
-            <h2 class="mdl-card__title-text" style="color:#F00;font-size: x-large;font-weight: bold">警告</h2><br>
-            <p style="text-align: left;color:#F00;font-size: 16px;">確定要刪除會員帳號嗎?<br>此動作不可逆。<br>若要繼續，請勾選核取方塊。</p><br>
-            <div class='g-recaptcha' data-sitekey='6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_' data-callback="onSubmit"></div>
+            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">木瓜書城</h2><br>
+            <p style="text-align: left;color:#000;font-size: 16px;">帳號已刪除，期待再相見。<br>即將自動登出。</p><br>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <a class='mdl-button mdl-js-button mdl-button--primary' href="revise.php" style="font-size: x-large">取消</a>
+            <div class="mdl-spinner mdl-js-spinner is-active"></div>
         </div>
     </div>
 </center>
 </body>
+
+
 
 
 

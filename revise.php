@@ -10,6 +10,7 @@
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>let db_password="";</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -32,21 +33,20 @@
     require_once("dbtools.inc.php");
     header("Content-type: text/html; charset=utf-8");
     $link = create_connection();
-    $id =  $_COOKIE["id"];
+    $id = $_COOKIE["id"];
 
     // 檢查帳號是否有人申請
     $sql = "SELECT * FROM user_data WHERE account = '$id'";
     $result = execute_sql($link, "papaya", $sql);
 
 
-
     while ($row = mysqli_fetch_assoc($result)) {
         $name = $row["name"];
         $password = $row["password"];
         $sex = $row["sex"];
-        if ($sex=="m"){
+        if ($sex == "m") {
             $sex = "男";
-        }else{
+        } else {
             $sex = "女";
         }
         $phone = $row["phone"];
@@ -56,22 +56,18 @@
     mysqli_free_result($result);
     mysqli_close($link);
     ?>
-    <script>
-        let del_message="";
-        let del_button="";
-            let name = <?php echo $name; ?>;
-            let password = <?php echo $password; ?>;
-            let sex = <?php echo $sex; ?>;
-            let phone = <?php echo $phone; ?>;
-            let address = <?php echo $address; ?>;
-    </script>
 </head>
 <body>
+
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button type="button" class="mdl-snackbar__action"></button>
+</div>
 <center><h3 align="center">修改會員資料</h3>
     <form id="form1" name="form1" method="post" action="register_check.php">
         <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
             <thead>
-            <tr >
+            <tr>
                 <th style="text-align: left;" colspan="2">若不修改密碼，請留空。</th>
             </tr>
             </thead>
@@ -81,7 +77,8 @@
                                                   style="font-size: 16px;">姓名</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" name="name" id="name" style="font-size: 16px;" value="<?php echo $name; ?>">
+                        <input class="mdl-textfield__input" type="text" name="name" id="name" style="font-size: 16px;"
+                               value="<?php echo $name; ?>">
                         <label class="mdl-textfield__label" for="sample2">姓名</label>
                     </div>
                 </td>
@@ -96,8 +93,9 @@
             </tr>
             <tr>
                 <td style="text-align:left"><span class="mdl-list__item-primary-content"
-                                                  style="font-size: 16px;">設定新密碼</span><br><span class="mdl-list__item-primary-content"
-                                                                                                      style="font-size: 1px;">若不修改，請留空</span></td>
+                                                  style="font-size: 16px;">設定新密碼</span><br><span
+                            class="mdl-list__item-primary-content"
+                            style="font-size: 1px;">若不修改，請留空</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" name="password" id="password"
@@ -108,8 +106,9 @@
             </tr>
             <tr>
                 <td style="text-align:left"><span class="mdl-list__item-primary-content"
-                                                  style="font-size: 16px;">確認新密碼</span><br><span class="mdl-list__item-primary-content"
-                                                                                                     style="font-size: 1px;">若不修改，請留空</span></td>
+                                                  style="font-size: 16px;">確認新密碼</span><br><span
+                            class="mdl-list__item-primary-content"
+                            style="font-size: 1px;">若不修改，請留空</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" name="password_c"
@@ -143,7 +142,7 @@
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name="address" id="address"
-                               style="font-size: 16px;"  value="<?php echo $address; ?>">
+                               style="font-size: 16px;" value="<?php echo $address; ?>">
                         <label class="mdl-textfield__label" for="sample2">地址</label>
                     </div>
                 </td>
@@ -156,58 +155,58 @@
             <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
                 <tbody>
                 <tr>
-                    <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">確認目前密碼</span></td>
+                    <td style="text-align:left"><span class="mdl-list__item-primary-content" style="font-size: 16px;">確認目前密碼</span>
+                    </td>
                     <td style="text-align:left">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="password" name="password_current" id="password_current">
+                            <input class="mdl-textfield__input" type="password" name="password_current"
+                                   id="password_current">
                             <label class="mdl-textfield__label" for="sample2">密碼</label>
                         </div>
                     </td>
                 </tr>
                 </tbody>
-            </table><br><br>
-        <!--reCAPTCHA 公鑰-->
-        <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
-        <script>
-            function onSubmit(token) {
-                document.getElementById("form1").submit();
-            }
-        </script>
-    </form>
-    <br>
-    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-            onclick="history.back();">
-        返回
-    </button>&nbsp;&nbsp;
+            </table>
+            <br><br>
+            <!--reCAPTCHA 公鑰-->
+            <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_"
+                 data-callback="onSubmit"></div>
+            <script>
+                function onSubmit(token) {
+                    document.getElementById("form1").submit();
+                }
+
+            </script>
+        </form>
+        <br>
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                onclick="del_checkPW();">
-            刪除會員資料
+                onclick="history.back();">
+            返回
+        </button>&nbsp;&nbsp;
+        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                onclick="
+                db_password= '<?php echo $password; ?>' ;
+                if (db_password == form1.password_current.value){
+                    var dialog = document.querySelector('dialog');
+                    location.href='del_user_check.php'
+                }else {
+                    var notification = document.querySelector('.mdl-js-snackbar');
+                    var data = {
+                        message: '請先確認目前密碼',
+                        actionHandler: function (event) {
+
+                        },
+                        actionText: ' ',
+                        timeout: 3000
+                    };
+                    notification.MaterialSnackbar.showSnackbar(data);
+                }
+            ">刪除會員資料
         </button>
-    <p>&nbsp;</p>
+        <p>&nbsp;</p>
 
 </center>
-<dialog class="mdl-dialog">
-    <h4 class="mdl-dialog__title">刪除帳號</h4>
-    <div class="mdl-dialog__content">
-        <p style="color: #F00" id="del_message"></p>
-    </div>
-    <div class="mdl-dialog__actions" id="del_button">
-    </div>
-</dialog>
-<script>
-    var dialog = document.querySelector('dialog');
-    function del_checkPW(){
-        if(password==document.getElementById(password_current).value){
-            document.getElementById(del_message).innerHTML="<br>確定要刪除會員帳號嗎?<br>此動作不可逆。<br>若要繼續，請勾選核取方塊。";
-            document.getElementById(del_button).innerHTML=`<div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="location.href='del_user_check.php';"></div>
-<button class="mdl-button mdl-js-button mdl-button--primary" onClick="dialog.close();">取消</button>`;
-        }else{
-            document.getElementById(del_message).innerHTML="<br>請先確認目前密碼";
-            document.getElementById(del_button).innerHTML=`<button class="mdl-button mdl-js-button mdl-button--primary" onClick="dialog.close();">好</button>`;
-        }
-        dialog.showModal();
-    }
-</script>
+
 </body>
 </html>
 
