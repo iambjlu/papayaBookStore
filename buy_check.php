@@ -201,7 +201,7 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     //$time = `Select Getdate()`;
     //echo "$time";
     $sql = "INSERT INTO order_data (order_number, account, name, sex, phone,
-    address, payment_method, tcount, a1n, a2n, a3n, a4n, b1n, b2n, b3n, b4n, c1n, c2n, c3n, c4n,total, time,book) VALUES ('$order_number','$account','$name','$sex' ,'$phone','$address','$payment_method','$tcount', '$a1n','$a2n','$a3n','$a4n','$b1n','$b2n','$b3n','$b4n','$c1n','$c2n','$c3n','$c4n','$total','$time',$'book')";
+    address, payment_method, tcount, a1n, a2n, a3n, a4n, b1n, b2n, b3n, b4n, c1n, c2n, c3n, c4n,total, time,book) VALUES ('$order_number','$account','$name','$sex' ,'$phone','$address','$payment_method','$tcount', '$a1n','$a2n','$a3n','$a4n','$b1n','$b2n','$b3n','$b4n','$c1n','$c2n','$c3n','$c4n','$total','$time','$book')";
 
 
     $result = mysqli_query($link,$sql);
