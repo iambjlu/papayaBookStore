@@ -14,6 +14,14 @@
         body {
             font-family: "Roboto", "PingFang TC", AppleGothic, "微軟正黑體", "Microsoft JhengHei";
         }
+        .demo-card-square.mdl-card {
+            width: 400px;
+            height: 400px;
+        }
+
+        .demo-card-square > .mdl-card__title {
+            color: #FFF;
+        }
     </style>
     <?php
     // 檢查 cookie 中的 passed 變數是否等於 TRUE
@@ -30,7 +38,7 @@
 
 <body><center>
 
-    <h3>查詢訂單</h3>
+    <h3>我的訂單</h3>
 
 <?php
 //建立資料庫連接
@@ -45,7 +53,24 @@ $result = execute_sql($link, "papaya", $sql);
 
 // 如果帳號無人使用
 if (mysqli_num_rows($result) == 0) {
-    echo "空空如也。快去下單吧!";
+    echo '<br><br><br>
+<div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center">
+        <div class="mdl-card__title mdl-card--expand"
+             style="background: url(source/welcome_rounded.png) center no-repeat #9CACCD; ">
+        </div>
+        <div class="mdl-card__supporting-text">
+            <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold"></h2><br>
+            <p style="text-align: center;color:#000;font-size: x-large;font-weight: bold">空空如也</p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="introduction.php"">
+                看看書籍介紹
+            </a><br><a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="buy.php"">
+                立刻下單
+            </a>
+        </div>
+    </div>
+';
 }else{
     echo "<h3 style='font-size: 18px'>".$id." 的訂單資料</h3>";
 

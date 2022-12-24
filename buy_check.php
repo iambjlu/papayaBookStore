@@ -29,12 +29,17 @@
     <?php
     // 檢查 cookie 中的 passed 變數是否等於 TRUE
     $passed = $_COOKIE["passed"];
-
     /* 如果 cookie 中的 passed 變數不等於 TRUE
        表示尚未登入網站，將使用者導向首頁 index.html */
-    if ($passed != "TRUE")
-    {
+    if ($passed != "TRUE"){
         header("location:login.php");
+        exit();
+    }
+    $buy = $_COOKIE["buy"];
+    if ($buy=1){
+        setcookie("buy",0);
+    }else{
+        header("location:buy.php");
         exit();
     }
     ?>
@@ -62,9 +67,7 @@
 </center>
 
 <?php
-
-
-if ($_POST["T1"]=="" || $_POST["T2"]==""){
+if ($_POST["T1"]=="" || $_POST["T2"]=="" || $_POST["s"]=="no"){
     echo '<script>
 document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成收件資料填寫";
 </script>';
@@ -113,16 +116,12 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     }
     $account = $_COOKIE["id"];
     $name = $_POST["T1"];
+    $phone = $_POST["phone"];
     $address = $_POST["T2"];
     $payment_method = $_POST["Tpay"];
     //$s = $_POST["s"];
     $sex = $_POST["s"];
-    $sex_zhtw = "";
-    if ($sex == "m") {
-        $sex_zhtw = "先生";
-    } else {
-        $sex_zhtw = "小姐";
-    }
+
 
 //隨機取數
     $seed = time();// 使用时间作为种子源
@@ -147,7 +146,7 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     //$time = `Select Getdate()`;
     //echo "$time";
     $sql = "INSERT INTO order_data (order_number, account, name, sex, phone,
-    address, payment_method, book_name,time) VALUES ('$order_number','$account','$name','$sex' ,'065128818','$address','$payment_method','$book','$time')";
+    address, payment_method, book_name,time) VALUES ('$order_number','$account','$name','$sex' ,'$phone','$address','$payment_method','$book','$time')";
 
 
     $result = mysqli_query($link,$sql);
@@ -178,12 +177,13 @@ document.getElementById("card_message").innerHTML = "訂購失敗<br>請完成�
     let message = "<?php
         echo "<b>" . $_POST["T1"] . " " . $_POST["s"];
         echo "您好! 我們已收到您的訂單</b><p><br>";
-        echo "訂單隨機碼︰" . $order_number . "<br>";
+        echo "電話︰" . $_POST["phone"] . "<br>";
         echo "收件地址︰" . $_POST["T2"] . "<br>";
         echo "付款方式︰" . $_POST["Tpay"] . "<br><br>";
         echo "您買了︰<br>" . $book . "<br>";
         echo "總共︰" . $tcount . "本書<br>";
         echo "總計新台幣︰" . $total . "元<br>";
+        echo "訂單隨機碼︰" . $order_number . "<br>";
         ?>";
     document.getElementById("card_message").innerHTML = message;
 </script>

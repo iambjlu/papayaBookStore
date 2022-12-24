@@ -25,6 +25,27 @@
         header("location:login.php");
         exit();
     }
+
+    require_once("dbtools.inc.php");
+    header("Content-type: text/html; charset=utf-8");
+    $link = create_connection();
+    $id = $_COOKIE["id"];
+
+    // 檢查帳號是否有人申請
+    $sql = "SELECT * FROM user_data WHERE account = '$id'";
+    $result = execute_sql($link, "papaya", $sql);
+
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $name = $row["name"];
+        $password = $row["password"];
+        $phone = $row["phone"];
+        $address = $row["address"];
+    }
+
+    mysqli_free_result($result);
+    mysqli_close($link);
+    setcookie("buy", 1);
     ?>
 </head>
 
@@ -48,17 +69,8 @@
                 <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件人</span></td>
                 <td style="text-align:left">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" name="T1" id="T1">
+                        <input class="mdl-textfield__input" type="text" name="T1" id="T1" value="<?php echo $name ?>">
                         <label class="mdl-textfield__label" for="sample2">收件人</label>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件地址</span></td>
-                <td style="text-align:left">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" name="T2" id="T2">
-                        <label class="mdl-textfield__label" for="sample2">收件地址</label>
                     </div>
                 </td>
             </tr>
@@ -74,8 +86,30 @@
                         <input type="radio" name="s" id="f" value="小姐" class="mdl-radio__button" >
                         <span class="mdl-radio__label" style="font-size: 16px;">女</span>
                     </label>
+
                 </td>
             </tr>
+            <tr>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">電話</span></td>
+                <td style="text-align:left">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="phone"
+                               id="phone" style="font-size: 16px;" value="<?php echo $phone ?>">
+                        <label class="mdl-textfield__label" for="sample2">電話</label>
+                        <span class="mdl-textfield__error">請輸入有效的電話</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件地址</span></td>
+                <td style="text-align:left">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="T2" id="T2" value="<?php echo $address ?>">
+                        <label class="mdl-textfield__label" for="sample2">收件地址</label>
+                    </div>
+                </td>
+            </tr>
+
             <tr>
                 <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">付款方式</span></td>
                 <td style="text-align:left">
@@ -144,7 +178,7 @@
         </script>
 
         <br><br><br><br>
-
+        <div style="visibility: hidden"><input type="radio" name="s" id='no' value="no" checked></div>
     </form>
 </center>
 </body>

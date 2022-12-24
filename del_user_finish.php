@@ -39,6 +39,9 @@
     $sql = "DELETE FROM user_data where account = '$id'";
     $result = execute_sql($link, "papaya", $sql);
 
+    $sql = "DELETE FROM order_data where account = '$id'";
+    $result = execute_sql($link, "papaya", $sql);
+
     mysqli_close($link);
     ?>
 
