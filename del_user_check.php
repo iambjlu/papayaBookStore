@@ -88,7 +88,7 @@
         </div>
         <div class="mdl-card__supporting-text">
             <h2 class="mdl-card__title-text" style="color:#F00;font-size: x-large;font-weight: bold">警告</h2><br>
-            <p style="text-align: left;color:#F00;font-size: 16px;">確定要刪除會員帳號嗎?<br>請謹慎考慮，此動作不可逆。</p>
+            <p style="text-align: left;color:#F00;font-size: 16px;">確定要刪除會員帳號嗎?<br>所有的訂單都將被清空，請謹慎考慮，此動作不可逆。</p>
             <p style="text-align: left;color:#000;font-size: 16px;">若要繼續，請輸入下方文字後，再勾選核取方塊。</p><br>
             <form id="form1" name="form1" method="post" action="register_check.php">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;alignment: center">
