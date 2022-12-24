@@ -55,7 +55,7 @@
         <button type="button" class="mdl-snackbar__action"></button>
     </div>
 
-<form id="form2" name="form2" method="post" action="login_check.php">
+<form id="form1" name="form1" method="post" action="login_check.php">
     <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
     <thead>
     <tr>
@@ -83,12 +83,12 @@
     </tr>
     </tbody>
 </table><br><br>
-    <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可登入。若忘記密碼請洽管理員重置。</span><br><br>
+    <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可登入。</span><br><br>
     <!--reCAPTCHA 公鑰-->
     <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
     <script>
         function onSubmit(token) {
-            document.getElementById("form2").submit();
+            document.getElementById("form1").submit();
         }
     </script>
     <br><br>
