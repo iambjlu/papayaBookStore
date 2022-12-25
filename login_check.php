@@ -175,15 +175,14 @@ if (screen.width >= screen.height) {
 //    header("location:main.php");
 //}
 //?>
-
+<iframe id="ifttt" style="visibility: hidden" width="0px" height="0px"></iframe>
 <script>
-    let ip = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
-    if(ip=="::1"){
-        ip="ngrok.io 或 localhost"
-    }
-    let message = "<?php
-        echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ";
-        ?>" + ip;
+    <?php
+    $ip= $_SERVER['REMOTE_ADDR'];
+    if($ip=="::1"){
+        $ip="ngrok.io 或 localhost";
+    }?>
+    let message = "<?php echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ".$ip;?>"
     document.getElementById("card_message").innerHTML = message;
     if (screen.width >= screen.height) {
         document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href="introduction.php" target="imain">
@@ -194,8 +193,12 @@ if (screen.width >= screen.height) {
                 好
             </a>`;
     }
+    setTimeout(function() {
+        document.getElementById('ifttt').src='https://maker.ifttt.com/trigger/papaya_login/with/key/dJEM6VPGhNmCQ8T34iC78C?value1=<?php echo $id?>&value2=<?php echo $ip?>';
+    }, 1500);
 
 </script>
+
 
 </body>
 </html>
