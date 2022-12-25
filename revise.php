@@ -10,7 +10,7 @@
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>let db_password="";</script>
+    <script>let db_password = "";</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -174,7 +174,22 @@
                  data-callback="onSubmit"></div>
             <script>
                 function onSubmit(token) {
-                    document.getElementById("form1").submit();
+                    db_password = '<?php echo $password; ?>';
+                    if (db_password == form1.password_current.value) {
+                        var dialog = document.querySelector('dialog');
+                        document.getElementById("form1").submit();
+                    } else {
+                        var notification = document.querySelector('.mdl-js-snackbar');
+                        var data = {
+                            message: '請先確認目前密碼',
+                            actionHandler: function (event) {
+                                location.href = 'revise.php';
+                            },
+                            actionText: '重試',
+                            timeout: 5000
+                        };
+                        notification.MaterialSnackbar.showSnackbar(data);
+                    }
                 }
 
             </script>
@@ -186,23 +201,23 @@
         </button>&nbsp;&nbsp;
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                 onclick="
-                db_password= '<?php echo $password; ?>' ;
-                if (db_password == form1.password_current.value){
-                    var dialog = document.querySelector('dialog');
-                    location.href='del_user_check.php'
-                }else {
-                    var notification = document.querySelector('.mdl-js-snackbar');
-                    var data = {
+                        db_password= '<?php echo $password; ?>' ;
+                        if (db_password == form1.password_current.value){
+                        var dialog = document.querySelector('dialog');
+                        location.href='del_user_check.php'
+                        }else {
+                        var notification = document.querySelector('.mdl-js-snackbar');
+                        var data = {
                         message: '請先確認目前密碼',
                         actionHandler: function (event) {
-
+                            location.href = 'revise.php';
                         },
-                        actionText: ' ',
-                        timeout: 3000
-                    };
-                    notification.MaterialSnackbar.showSnackbar(data);
-                }
-            ">刪除會員帳號
+                        actionText: '重試',
+                        timeout: 5000
+                        };
+                        notification.MaterialSnackbar.showSnackbar(data);
+                        }
+                        ">刪除會員帳號
         </button>
         <p>&nbsp;</p>
 

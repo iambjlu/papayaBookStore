@@ -39,7 +39,7 @@
         <div class="mdl-card__supporting-text">
             <h2 class="mdl-card__title-text" style="color:#000;font-size: x-large;font-weight: bold">操作失敗</h2><br>
             <h2 class="mdl-card__title-text" style="color:#000;font-size: 18px;">可能的錯誤原因:</h2><br>
-            <p id="card_message" style="text-align: left;color:#000;font-size: 16px;">1.您迷路了<br>解決方案: 未正確操作<br><br>2.瀏覽器不支援Cookie<br>解決方案: 改用Edge、Chrome或Brave瀏覽器<br><br>3.瀏覽器Cookie遭到停用<br>解決方案: <br>如果使用Chrome或Brave瀏覽器，請前往瀏覽器設定，並搜尋前往「Cookie 和其他網站資料」>
+            <p id="card_message" style="text-align: left;color:#000;font-size: 16px;">1.連線階段已過期<br>解決方案: 請回首頁重新登入<br><br>2.瀏覽器不支援Cookie<br>解決方案: 改用Edge、Chrome或Brave瀏覽器<br><br>3.瀏覽器Cookie遭到停用<br>解決方案: <br>如果使用Chrome或Brave瀏覽器，請前往瀏覽器設定，並搜尋前往「Cookie 和其他網站資料」>
                 選取「允許所有 Cookie」，並且從「一律無法使用 Cookie 的網站」清單刪除本網站<br><br>如果使用Edge瀏覽器，請前往瀏覽器設定，並搜尋前往「管理及刪除 Cookie 和網站資料」> 開啟「允許網站儲存並讀取 Cookie 資料 (建議)」，並且從「封鎖」清單刪除本網站</p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
