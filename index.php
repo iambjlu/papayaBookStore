@@ -37,7 +37,7 @@
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="eula.php" target="_blank">木瓜書城使用條款</a>
+            <a class="mdl-navigation__link" href="eula.php">木瓜書城使用條款</a>
             <a class="mdl-navigation__link" href="javascript: dialog.showModal();">關於木瓜書城</a>
         </nav>
     </div>
