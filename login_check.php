@@ -180,7 +180,7 @@ if (screen.width >= screen.height) {
     <?php
     $ip= $_SERVER['REMOTE_ADDR'];
     if($ip=="::1"){
-        $ip="ngrok.io 或 localhost";
+        $ip="ngrok 或 localhost";
     }?>
     let message = "<?php echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ".$ip;?>"
     document.getElementById("card_message").innerHTML = message;
@@ -195,7 +195,7 @@ if (screen.width >= screen.height) {
     }
     setTimeout(function() {
         document.getElementById('ifttt').src='https://maker.ifttt.com/trigger/papaya_login/with/key/dJEM6VPGhNmCQ8T34iC78C?value1=<?php echo $id?>&value2=<?php echo $ip?>';
-    }, 1500);
+    }, 1000);
 
 </script>
 
