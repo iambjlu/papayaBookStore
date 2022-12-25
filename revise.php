@@ -10,7 +10,7 @@
     <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>let db_password = "";</script>
+    <script>let db_password = "";let admin=0;</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
@@ -33,7 +33,11 @@
     require_once("dbtools.inc.php");
     header("Content-type: text/html; charset=utf-8");
     $link = create_connection();
+    $admin=0;
     $id = $_COOKIE["id"];
+    if($id=="Administrator"){
+        $admin=1;
+    }
 
     // 檢查帳號是否有人申請
     $sql = "SELECT * FROM user_data WHERE account = '$id'";
@@ -58,7 +62,6 @@
     ?>
 </head>
 <body>
-
 <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
     <div class="mdl-snackbar__text"></div>
     <button type="button" class="mdl-snackbar__action"></button>
@@ -181,7 +184,7 @@
                     } else {
                         var notification = document.querySelector('.mdl-js-snackbar');
                         var data = {
-                            message: '請先確認目前密碼',
+                            message: messageContent,
                             actionHandler: function (event) {
                                 location.href = 'revise.php';
                             },
@@ -199,23 +202,37 @@
                 onclick="history.back();">
             取消
         </button>&nbsp;&nbsp;
-        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        <button id="del_btn" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                 onclick="
+                        admin='<?php echo $admin ?>' ;
                         db_password= '<?php echo $password; ?>' ;
-                        if (db_password == form1.password_current.value){
-                        var dialog = document.querySelector('dialog');
-                        location.href='del_user_check.php'
+                        if (db_password == form1.password_current.value && admin==0){
+                            var dialog = document.querySelector('dialog');
+                            location.href='del_user_check.php'
                         }else {
-                        var notification = document.querySelector('.mdl-js-snackbar');
-                        var data = {
-                        message: '請先確認目前密碼',
-                        actionHandler: function (event) {
-                            location.href = 'revise.php';
-                        },
-                        actionText: '重試',
-                        timeout: 5000
-                        };
-                        notification.MaterialSnackbar.showSnackbar(data);
+                                if(admin==1){
+                                    var notification = document.querySelector('.mdl-js-snackbar');
+                                    var data = {
+                                            message: '管理員帳號無法刪除',
+                                            actionHandler: function (event) {
+
+                                            },
+                                            actionText: ' ',
+                                            timeout: 5000
+                                    }
+                                }else{
+                                        var notification = document.querySelector('.mdl-js-snackbar');
+                                        var data = {
+                                            message: '請先確認目前密碼',
+                                            actionHandler: function (event) {
+                                                location.href = 'revise.php';
+                                            },
+                                        actionText: '重試',
+                                        timeout: 5000
+                                        }
+                                    };
+                                notification.MaterialSnackbar.showSnackbar(data);
+
                         }
                         ">刪除會員帳號
         </button>

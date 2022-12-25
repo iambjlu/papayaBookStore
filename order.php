@@ -54,13 +54,15 @@ require_once("dbtools.inc.php");
 header("Content-type: text/html; charset=utf-8");
 $link = create_connection();
 $id =  $_COOKIE["id"];
-?>
 
-    <?php $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time DESC";
-    $result = execute_sql($link, "papaya", $sql); ?>
+if($id=="Administrator"){
+    $sql = "SELECT * FROM order_data ORDER BY time DESC";
+    $result = execute_sql($link, "papaya", $sql);
+}else {
+    $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time DESC";
+    $result = execute_sql($link, "papaya", $sql);
+}
 
-
-<?php
 // 如果帳號無人使用
 if (mysqli_num_rows($result) == 0) {
     echo '<br><br><br>
@@ -82,7 +84,7 @@ if (mysqli_num_rows($result) == 0) {
     </div>
 ';
 }else{
-    echo "<h3 style='font-size: 18px'>".$id." 的訂單資料</h3><hr/>";
+    echo "<h3 style='font-size: 18px'>登入身分: ".$id."</h3><hr/>";
 
     while($row=mysqli_fetch_assoc($result)){
 
@@ -102,6 +104,10 @@ if (mysqli_num_rows($result) == 0) {
     </tr>
     </thead>
     <tbody>
+    <tr>
+        <td style='text-align:left' ><span class='mdl-list__item-primary-content' style='font-size: 16px;'>訂購帳號</span></td>
+        <td style='text-align:left'><span class='mdl-list__item-primary-content' style='font-size: 16px;'>".$row["account"]."</span></td>
+    </tr>
     <tr>
         <td style='text-align:left' ><span class='mdl-list__item-primary-content' style='font-size: 16px;'>最後修改時間</span></td>
         <td style='text-align:left'><span class='mdl-list__item-primary-content' style='font-size: 16px;'>".$row["time"]."</span></td>

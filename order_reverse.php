@@ -41,29 +41,31 @@
 
     <h3>我的訂單</h3>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option1">
-        <input type="radio" id="option1" class="mdl-radio__button" name="options" value="1" onclick="location.href='order.php'" >
+        <input type="radio" id="option1" class="mdl-radio__button" name="options" value="1" onclick="location.href='order.php'">
         <span class="mdl-radio__label">從新到舊排序</span>
     </label>&nbsp;&nbsp;
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option2">
         <input type="radio" id="option2" class="mdl-radio__button" name="options" value="2" checked>
         <span class="mdl-radio__label">從舊到新排序</span>
     </label>&nbsp;
-<?php
-//建立資料庫連接
-require_once("dbtools.inc.php");
-header("Content-type: text/html; charset=utf-8");
-$link = create_connection();
-$id =  $_COOKIE["id"];
-?>
+    <?php
+    //建立資料庫連接
+    require_once("dbtools.inc.php");
+    header("Content-type: text/html; charset=utf-8");
+    $link = create_connection();
+    $id =  $_COOKIE["id"];
 
-    <?php $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time ASC";
-    $result = execute_sql($link, "papaya", $sql); ?>
+    if($id=="Administrator"){
+        $sql = "SELECT * FROM order_data ORDER BY time ASC";
+        $result = execute_sql($link, "papaya", $sql);
+    }else {
+        $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time ASC";
+        $result = execute_sql($link, "papaya", $sql);
+    }
 
-
-<?php
-// 如果帳號無人使用
-if (mysqli_num_rows($result) == 0) {
-    echo '<br><br><br>
+    // 如果帳號無人使用
+    if (mysqli_num_rows($result) == 0) {
+        echo '<br><br><br>
 <div class="demo-card-square mdl-card mdl-shadow--2dp" style="alignment: center">
         <div class="mdl-card__title mdl-card--expand"
              style="background: url(source/welcome_rounded.png) center no-repeat #9CACCD; ">
@@ -81,15 +83,15 @@ if (mysqli_num_rows($result) == 0) {
         </div>
     </div>
 ';
-}else{
-    echo "<h3 style='font-size: 18px'>".$id." 的訂單資料</h3><hr/>";
+    }else{
+        echo "<h3 style='font-size: 18px'>登入身分: ".$id."</h3><hr/>";
 
-    while($row=mysqli_fetch_assoc($result)){
+        while($row=mysqli_fetch_assoc($result)){
 
 
-        $order_n = $row["order_number"];
+            $order_n = $row["order_number"];
 
-        echo "<br><br>
+            echo "<br><br>
 <form action='del_check.php' method='post' name='formdel' id='formdel'>
     <table class='mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp'>
     <thead>
@@ -102,6 +104,10 @@ if (mysqli_num_rows($result) == 0) {
     </tr>
     </thead>
     <tbody>
+    <tr>
+        <td style='text-align:left' ><span class='mdl-list__item-primary-content' style='font-size: 16px;'>訂購帳號</span></td>
+        <td style='text-align:left'><span class='mdl-list__item-primary-content' style='font-size: 16px;'>".$row["account"]."</span></td>
+    </tr>
     <tr>
         <td style='text-align:left' ><span class='mdl-list__item-primary-content' style='font-size: 16px;'>最後修改時間</span></td>
         <td style='text-align:left'><span class='mdl-list__item-primary-content' style='font-size: 16px;'>".$row["time"]."</span></td>
@@ -137,9 +143,9 @@ if (mysqli_num_rows($result) == 0) {
 </form>
 <br><br>
 <hr/><br><br>";
+        }
     }
-}
-?>
+    ?>
 
 
 

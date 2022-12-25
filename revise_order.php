@@ -32,12 +32,13 @@
     $p1=$_POST["order"];
     require_once("dbtools.inc.php");
     header("Content-type: text/html; charset=utf-8");
-    $id = $_COOKIE["id"];
+
     $link = create_connection();
     $sql = "SELECT * FROM order_data WHERE order_number = '$p1'";
     $result = execute_sql($link, "papaya", $sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row["account"];
         $name = $row["name"];
         $phone = $row["phone"];
         $address = $row["address"];
@@ -84,6 +85,12 @@
             </tr>
             </thead>
             <tbody>
+            <tr>
+                <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">訂購帳號</span></td>
+                <td style="text-align:left">
+                    <span class="mdl-radio__label" style="font-size: 16px;"><?php echo $id ?></span>
+                </td>
+            </tr>
             <tr>
                 <td style="text-align:left" ><span class="mdl-list__item-primary-content" style="font-size: 16px;">收件人</span></td>
                 <td style="text-align:left">

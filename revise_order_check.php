@@ -75,6 +75,7 @@ document.getElementById("card_message").innerHTML = "修改失敗<br>請完成�
 </script>';
 
 }else {
+    $account=$_COOKIE["id"];
 $p1=$_POST["order"];
 $order_number=$p1;
 $total = 0;
@@ -110,7 +111,6 @@ $c4n=intval($_POST["c4n"]);
 $tcount=$a1n+$a2n+$a3n+$a4n+$b1n+$b2n+$b3n+$b4n+$c1n+$c2n+$c3n+$c4n;
 $total=$a1n*520+$a2n*600+$a3n*540+$a4n*560+$b1n*1100+$b2n*260+$b3n*300+$b4n*380+$c1n*390+$c2n*180+$c3n*419+$c4n*252;
 
-$account = $_COOKIE["id"];
 $name = $_POST["T1"];
 $phone = $_POST["phone"];
 $address = $_POST["T2"];
@@ -190,7 +190,7 @@ $result = execute_sql($link, "papaya", $sql);
 
 mysqli_close($link);
 }
-$message="<b>" . $_POST["T1"] . "您好! 我們已收到您的訂單修改請求</b><p><br>電話︰" . $_POST["phone"] . "<br>收件地址︰" . $_POST["T2"] . "<br>付款方式︰" . $_POST["Tpay"] . "<br><br>您買了︰<br>" . $book . "<br>總共︰" . $tcount . "本書<br>總計新台幣︰" . $total . "元<br>訂單隨機碼︰" . $p1 . "<br>";
+$message="<b>" . $account . " 您好! 我們已收到您的訂單修改請求</b><p><br>電話︰" . $_POST["phone"] . "<br>收件地址︰" . $_POST["T2"] . "<br>付款方式︰" . $_POST["Tpay"] . "<br><br>訂購項目︰<br>" . $book . "<br>總共︰" . $tcount . "本書<br>總計新台幣︰" . $total . "元<br>訂單隨機碼︰" . $p1 . "<br>";
 ?>
 
 <script>
