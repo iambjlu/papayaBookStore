@@ -6,6 +6,7 @@
     <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -59,7 +60,7 @@
             <p id="card_message" style="text-align: left;color:#000;font-size: 16px;"></p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="history.back();">
+            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="location.href='order.php'">
                 好
             </button>
         </div>

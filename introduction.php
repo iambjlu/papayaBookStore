@@ -6,6 +6,7 @@
     <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script>let login = false;let welcome="0"</script>
@@ -74,9 +75,9 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 $sex = $row["sex"];
                 if ($sex == "m") {
-                    echo '推薦你看 程式設計、翻譯小說';
+                    echo '哈囉 '.$row['name'].'，推薦你看: 程式設計、翻譯小說';
                 } else {
-                    echo '推薦妳看 中文小說、翻譯小說';
+                    echo '哈囉 '.$row['name'].'，推薦妳看: 中文小說、翻譯小說';
                 }
             }
 

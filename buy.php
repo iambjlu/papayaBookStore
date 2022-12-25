@@ -6,6 +6,7 @@
     <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <style type="text/css">
@@ -53,7 +54,7 @@
 
 <body>
 <center>
-    <h3>購物車 </h3>
+    <h3>購物車</h3>
 
 
     <form action="buy_check.php" method="post" name="form1" id="form1">

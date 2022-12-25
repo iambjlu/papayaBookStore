@@ -6,6 +6,7 @@
     <title>木瓜書城</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
+    <link rel=icon href="source/welcome_rounded.png" sizes="16x16" type="image/png">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
@@ -66,7 +67,7 @@
 
 <body>
 <center>
-    <h3>購物車 </h3>
+    <h3>修改訂單</h3>
 
 
     <form action="revise_order_check.php" method="post" name="form1" id="form1">
@@ -353,8 +354,7 @@
             </tbody>
         </table>
 
-        <br><br><br><h4>步驟3: 完成修改</h4>
-        <span style="text-align: left;color:#000;font-size: 16px;">勾選核取方塊即可完成修改流程。</span><br><br>
+        <br><br><br><h4>步驟3: 完成修改</h4>勾選核取方塊即可完成修改流程。<br>請注意，木瓜書城有權利拒絕訂單修改申請<br><br>
         <!--reCAPTCHA 公鑰-->
         <div class="g-recaptcha" data-sitekey="6LflQ50jAAAAAIVCPUx0qb_Pft1ktxeeVqYp8Ib_" data-callback="onSubmit"></div>
         <script>
