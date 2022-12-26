@@ -45,7 +45,7 @@
                 location.href = "buy.php";
             },
             actionText: '下單去',
-            timeout: 60000
+            timeout: 300000
         };
         notification.MaterialSnackbar.showSnackbar(data);
     }, 120000);
