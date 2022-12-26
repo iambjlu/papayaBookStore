@@ -88,7 +88,7 @@
 
     <table width="360" border="0" align="center">
       <tr>
-        <td width="318" height="700" align="center" valign="top" background="source/Rectangle 1.png"
+        <td width="318" height="818" align="center" valign="top" background="source/Rectangle 1.png"
                     style="background-repeat: no-repeat; font-size: 10px; color: #FFFFFF; background-size:100% 100%"><span
                             style="text-align: center"><br/>
           <br/>
@@ -130,6 +130,15 @@
             font-size: 24px;width:280px;height:60px;" onclick="location.href='index.php';">登出書城 </button>
                 </a></td>
             </tr>
+              <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat;
+			background-size:100% 100%;">
+                  <td width="280" height="60" align="center">
+                      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="location.href='https://lin.ee/IorDvpz'">LINE真人客服
+                      </button>
+                      </a>
+                  </td>
+              </tr>
           </table></td>
       </tr>
     </table>

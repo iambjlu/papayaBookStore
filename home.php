@@ -84,6 +84,7 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="https://lin.ee/IorDvpz" target="_blank" style="font-size: 16px">LINE真人客服</a>
                 <a class="mdl-navigation__link" href="introduction.php" target="imain" style="font-size: 16px">書籍介紹</a>
                 <a class="mdl-navigation__link" href="buy.php" target="imain" style="font-size: 16px">購買書籍</a>
                 <a class="mdl-navigation__link" href="order.php" target="imain" style="font-size: 16px">我的訂單</a>
@@ -153,6 +154,15 @@
                             <td width="280" height="60" align="center">
                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
             font-size: 24px;width:280px;height:60px;" onclick="location.href='index.php';">登出書城
+                                </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat;
+			background-size:100% 100%;">
+                            <td width="280" height="60" align="center">
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='https://lin.ee/IorDvpz'">LINE真人客服
                                 </button>
                                 </a>
                             </td>
