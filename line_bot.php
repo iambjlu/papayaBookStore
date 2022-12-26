@@ -48,127 +48,35 @@ mysqli_close($link);
 
 $message = null;
 $event = null;
+
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-
-
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message': //訊息觸發
             $message = $event['message'];
             switch ($message['type']) {
-                case 'text':
-                    //訊息為文字
-//                    require_once('includes/text.php'); //Type: Text
-//                    require_once('includes/image.php'); //Type: Image
-//                    require_once('includes/video.php'); //Type: Video
-//                    require_once('includes/audio.php'); //Type: Audio
-//                    require_once('includes/location.php'); //Type: Location
-//                    require_once('includes/sticker.php'); //Type: Sticker
-//                    require_once('includes/imagemap.php'); //Type: Imagemap
-//                    require_once('includes/template.php'); //Type: Template
-//                    require_once('includes/flex.php'); //Type: Flex
+                case 'text': //訊息為文字
+                    require_once('includes/text.php'); //Type: Text
+                    require_once('includes/image.php'); //Type: Image
+                    require_once('includes/video.php'); //Type: Video
+                    require_once('includes/audio.php'); //Type: Audio
+                    require_once('includes/location.php'); //Type: Location
+                    require_once('includes/sticker.php'); //Type: Sticker
+                    require_once('includes/imagemap.php'); //Type: Imagemap
+                    require_once('includes/template.php'); //Type: Template
+                    require_once('includes/flex.php'); //Type: Flex
 
-                    if (strtolower($message['text']) == "buttons template" || $message['text'] == "按鈕模板") {
-                        $client->replyMessage(array(
-                            'replyToken' => $event['replyToken'],
-                            'messages' => array(
-                                array(
-                                    'type' => 'template', //訊息類型 (模板)
-                                    'altText' => 'Example buttons template', //替代文字
-                                    'template' => array(
-                                        'type' => 'buttons', //類型 (按鈕)
-                                        'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg', //圖片網址 <不一定需要>
-                                        'title' => 'Example Menu', //標題 <不一定需要>
-                                        'text' => 'Please select', //文字
-                                        'actions' => array(
-                                            array(
-                                                'type' => 'postback', //類型 (回傳)
-                                                'label' => 'Postback example', //標籤 1
-                                                'data' => 'action=buy&itemid=123' //資料
-                                            ),
-                                            array(
-                                                'type' => 'message', //類型 (訊息)
-                                                'label' => 'Message example', //標籤 2
-                                                'text' => 'Message example' //用戶發送文字
-                                            ),
-                                            array(
-                                                'type' => 'uri', //類型 (連結)
-                                                'label' => 'Uri example', //標籤 3
-                                                'uri' => 'https://github.com/GoneToneStudio/line-example-bot-tiny-php' //連結網址
-                                            )
-                                        )
-                                    )
-                                )
+                    $client->replyMessage(array(
+                        'replyToken' => $event['replyToken'],
+                        'messages' => array(
+                            array(
+                                'type' => 'text',
+                                'text' => '您好，這是一個範例 Bot OuO
+範例程式開源至 GitHub (包含教學)：
+https://github.com/GoneTone/line-example-bot-php'
                             )
-                        ));
-                    }
-                    switch($message['text']){
-                        case '登入帳號':
-                            $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text', //訊息類型 (文字)
-                                        'text' => '請輸入帳號。
-如欲取消，請輸入取消。' //回覆訊息
-                                    )
-                                )
-                            ));
-                        break;
-
-                        case '選單':
-                            $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text',
-                                        'text' => '您好，歡迎使用木瓜書城官方帳號
-請選擇要進行的操作'
-                                    ),
-                                    array(
-                                        'type' => 'template', //訊息類型 (模板)
-                                        'altText' => '', //替代文字
-                                        'template' => array(
-                                            'type' => 'buttons', //類型 (按鈕)
-                                            'thumbnailImageUrl' => 'https://887a-59-120-242-190.jp.ngrok.io/phpClass/FinalExam/source/welcome_square.png', //圖片網址 <不一定需要>
-                                            'title' => '木瓜書城', //標題 <不一定需要>
-                                            'text' => '您稍後可以傳送「選單」重新喚出此選單', //文字
-                                            'actions' => array(
-                                                array(
-                                                    'type' => 'message', //類型 (回傳)
-                                                    'label' => '登入帳號', //標籤 1
-                                                    'text' => '登入帳號' //資料
-                                                ),
-                                                array(
-                                                    'type' => 'message', //類型 (訊息)
-                                                    'label' => '真人客服', //標籤 2
-                                                    'text' => '真人客服' //用戶發送文字
-                                                ),
-                                                array(
-                                                    'type' => 'message', //類型 (連結)
-                                                    'label' => '訂單編號查詢', //標籤 3
-                                                    'text' => '訂單編號查詢' //連結網址
-                                                )
-                                            )
-                                        )
-
-                                    )
-                                )
-                            ));
-                            break;
-
-                        default:
-                            $client->replyMessage(array(
-                                'replyToken' => $event['replyToken'],
-                                'messages' => array(
-                                    array(
-                                        'type' => 'text', //訊息類型 (文字)
-                                        'text' => '哈囉。' //回覆訊息
-                                    )
-                                )
-                            ));
-                            break;
-                    }
+                        )
+                    ));
 
                     break;
                 default:
@@ -185,35 +93,9 @@ foreach ($client->parseEvents() as $event) {
                 'messages' => array(
                     array(
                         'type' => 'text',
-                        'text' => '您好，歡迎使用木瓜書城官方帳號
-請選擇要進行的操作'
-                    ),
-                    array(
-                        'type' => 'template', //訊息類型 (模板)
-                        'altText' => '', //替代文字
-                        'template' => array(
-                            'type' => 'buttons', //類型 (按鈕)
-                            'thumbnailImageUrl' => '![](source/welcome_square.png)', //圖片網址 <不一定需要>
-                            'title' => '木瓜書城', //標題 <不一定需要>
-                            'text' => '您稍後可以傳送「選單」重新喚出此選單', //文字
-                            'actions' => array(
-                                array(
-                                    'type' => 'message', //類型 (回傳)
-                                    'label' => '登入帳號', //標籤 1
-                                    'text' => '登入帳號' //資料
-                                ),
-                                array(
-                                    'type' => 'message', //類型 (訊息)
-                                    'label' => '真人客服', //標籤 2
-                                    'text' => '真人客服' //用戶發送文字
-                                ),
-                                array(
-                                    'type' => 'message', //類型 (連結)
-                                    'label' => '訂單編號查詢', //標籤 3
-                                    'text' => '訂單編號查詢' //連結網址
-                                )
-                            )
-                        )
+                        'text' => '您好，這是一個範例 Bot OuO
+範例程式開源至 GitHub (包含教學)：
+https://github.com/GoneTone/line-example-bot-php'
                     )
                 )
             ));
