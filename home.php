@@ -64,6 +64,9 @@
             exit();
         }
     }
+
+
+
     ?>
 </head>
 
@@ -90,6 +93,7 @@
                 <a class="mdl-navigation__link" href="order.php" target="imain" style="font-size: 16px">我的訂單</a>
                 <a class="mdl-navigation__link" href="login.php" target="imain" style="font-size: 16px" id="username_bar">username</a>
                 <a class="mdl-navigation__link" href="index.php" target="_top" style="font-size: 16px">登出書城</a>
+                <a class="mdl-navigation__link" href="" target="_top" style="font-size: 16px">test</a>
             </nav>
         </div>
     </header>

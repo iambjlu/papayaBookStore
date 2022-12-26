@@ -175,7 +175,7 @@ if ($_POST["T1"]=="" || $_POST["T2"]=="" || $_POST["s"]=="no"){
     }
 
 
-    $book = $a1t . $a2t . $a3t . $a4t . $b1t . $b2t . $b3t . $b4t . $c1t . $c2t . $c3t . $c4t;
+    $book = $a1t . $a2t . $a3t . $a4t . $b1t . $b2t . $b3t . $b4t . $c1t . $c2t . $c3t . $c4t. "<br>總共︰" . $tcount . "本書<br>總計新台幣︰" . $total . "元";
 
 
 //隨機取數
@@ -222,7 +222,7 @@ if ($_POST["T1"]=="" || $_POST["T2"]=="" || $_POST["s"]=="no"){
 //    }
 
 
-    $message = "<b>" . $_POST["T1"] . " " . $_POST["s"] . "您好! 我們已收到您的訂單</b><p><br>電話︰" . $_POST["phone"] . "<br>收件地址︰" . $_POST["T2"] . "<br>付款方式︰" . $_POST["Tpay"] . "<br><br>您買了︰<br>" . $book . "<br>總共︰" . $tcount . "本書<br>總計新台幣︰" . $total . "元<br>訂單隨機碼︰" . $order_number . "<br>";
+    $message = "<b>" . $_POST["T1"] . " " . $_POST["s"] . "您好! 我們已收到您的訂單</b><p><br>電話︰" . $_POST["phone"] . "<br>收件地址︰" . $_POST["T2"] . "<br>付款方式︰" . $_POST["Tpay"] . "<br><br>您買了︰<br>" . $book ."<br>訂單隨機碼︰" . $order_number . "<br>";
 }
 ?>
 
