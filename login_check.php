@@ -101,7 +101,8 @@ document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-but
             $login_history_2 = $row["login2"];
             $login_history_3 = $row["login3"];
         }
-        $sql = "UPDATE user_data SET login1 = '$time . '，來自' . $ip ', login2 ='$login_history_1',login3='$login_history_2' WHERE account='$id'";
+        $newlogin1_value = "$time" . '，來自 ' . "$ip";
+        $sql = "UPDATE `user_data` SET `login1`='$newlogin1_value',`login2`='$login_history_1',`login3`='$login_history_2' WHERE `account`='$id'";
         $result = execute_sql($link, "papaya", $sql);
 
         // 將使用者資料加入 cookies
@@ -132,9 +133,9 @@ if (screen.width >= screen.height) {
             </a>`;
     }
     //登入警告
-    //setTimeout(function() {
-    //    document.getElementById('ifttt').src='https://maker.ifttt.com/trigger/papaya_login/with/key/dJEM6VPGhNmCQ8T34iC78C?value1=<?php //echo $id?>//&value2=<?php //echo $ip?>//';
-    //}, 1000);
+    setTimeout(function() {
+        document.getElementById('ifttt').src='https://maker.ifttt.com/trigger/papaya_login/with/key/dJEM6VPGhNmCQ8T34iC78C?value1=<?php echo $id?>&value2=<?php echo $ip?>';
+    }, 1000);
 
 </script>
 

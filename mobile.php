@@ -134,7 +134,7 @@
 			background-size:100% 100%;">
                   <td width="280" height="60" align="center">
                       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
-            font-size: 24px;width:280px;height:60px;" onclick="location.href='https://lin.ee/IorDvpz'">LINE真人客服
+            font-size: 24px;width:280px;height:60px;" onclick="location.href='https://lin.ee/IorDvpz'">加入LINE好友
                       </button>
                       </a>
                   </td>

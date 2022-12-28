@@ -26,12 +26,11 @@ $website
 
 - 您可以在 書城主畫面>[您的用戶名稱] 找到秘密通行碼
 —————————————————";
-
+//不採用config.ini方案的話，在下方填入Token
 //$channelAccessToken = '';
 //$channelSecret = '';
 
-//採用config.ini方案的話
-//if (file_exists(__DIR__ . '/config.ini')) {
+//採用config.ini方案的話，把config_backup.ini改成config.ini，並填入Token
 $config = parse_ini_file("config.ini", true); //解析配置檔
 if ($config['Channel']['Token'] == null || $config['Channel']['Secret'] == null) {
     error_log("config.ini 配置檔未設定完全！", 0); //輸出錯誤
@@ -39,21 +38,6 @@ if ($config['Channel']['Token'] == null || $config['Channel']['Secret'] == null)
     $channelAccessToken = $config['Channel']['Token'];
     $channelSecret = $config['Channel']['Secret'];
 }
-//} else {
-//    $configFile = fopen("config.ini", "w") or die("Unable to open file!");
-//    $configFileContent = '
-//; Line Bot
-//; 官方文檔：https://developers.line.biz/en/reference/messaging-api/
-//[Channel]
-//; 請在雙引號內傳送您的 Line Bot "Channel access token"
-//Token = ""
-//; 請在雙引號內傳送您的 Line Bot "Channel secret"
-//Secret = ""
-//';
-//    fwrite($configFile, $configFileContent); //建立文件並寫入
-//    fclose($configFile); //關閉文件
-////    error_log("config.ini 配置檔建立成功，請編輯檔案填入資料！", 0); //輸出錯誤
-//}
 $message = null;
 $event = null;
 
@@ -169,10 +153,11 @@ $tcount 本書 / 總金額 $total 元";
 ————————————                                    
 🌏 網站最近三筆登入資料
 ————————————
-$login1;
-$login2;
-$login3;
+$login1
 
+$login2
+
+$login3
 
 ————————————                              
 📝 最近一筆訂單資料
