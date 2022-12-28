@@ -87,13 +87,12 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="https://lin.ee/IorDvpz" target="imain" style="font-size: 16px">LINE真人客服</a>
+                <a class="mdl-navigation__link" href="https://lin.ee/IorDvpz" target="imain" style="font-size: 16px">加入LINE好友</a>
                 <a class="mdl-navigation__link" href="introduction.php" target="imain" style="font-size: 16px">書籍介紹</a>
                 <a class="mdl-navigation__link" href="buy.php" target="imain" style="font-size: 16px">購買書籍</a>
                 <a class="mdl-navigation__link" href="order.php" target="imain" style="font-size: 16px">我的訂單</a>
                 <a class="mdl-navigation__link" href="login.php" target="imain" style="font-size: 16px" id="username_bar">username</a>
                 <a class="mdl-navigation__link" href="index.php" target="_top" style="font-size: 16px">登出書城</a>
-                <a class="mdl-navigation__link" href="" target="_top" style="font-size: 16px">test</a>
             </nav>
         </div>
     </header>

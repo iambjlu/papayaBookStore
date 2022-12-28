@@ -1,21 +1,31 @@
 <?php
 date_default_timezone_set("Asia/Taipei"); //設定時區為台北時區
 require_once('LINEBotTiny.php');
+$website="https://887a-59-120-242-190.jp.ngrok.io/phpClass/FinalExam/index.php";
+$menu="👋 您好
+歡迎使用木瓜書城官方LINE帳號
 
-//------資料庫撈Token和Secret
-require_once("dbtools.inc.php");
-header("Content-type: text/html; charset=utf-8");
-$link = create_connection();
-$sql = "SELECT * FROM line_api_key";
-$result = execute_sql($link, "line_api_key", $sql);
-while ($row = mysqli_fetch_assoc($result)) {
-    $channelAccessToken = $row["Token"];
-    $channelSecret = $row["Secret"];
-}
-mysqli_free_result($result);
-mysqli_close($link);
-//-----資料庫結束
+—————————————————   
+🌏 木瓜書城網址
+—————————————————
+$website
 
+
+—————————————————
+⭐ 功能
+—————————————————
+- 傳送 [選單] 可喚出此選單
+
+- 傳送您的秘密通行碼在此進行簡易會員查詢操作。
+
+
+—————————————————
+ℹ 說明
+—————————————————
+- 網址若更新，會公告在選單
+
+- 您可以在 書城主畫面>[您的用戶名稱] 找到秘密通行碼
+—————————————————";
 
 //$channelAccessToken = '';
 //$channelSecret = '';
