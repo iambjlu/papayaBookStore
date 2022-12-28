@@ -114,7 +114,16 @@
       <br/>
       </span>
                     <table border="0" cellspacing="10"><br/>
-                        <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat; 
+                        <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat;
+			background-size:100% 100%;">
+                            <td width="280" height="60" align="center">
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
+            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='https://lin.ee/IorDvpz'">加入LINE好友
+                                </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat;
 			background-size:100% 100%;">
                             <td width="280" height="60" align="center">
                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
@@ -147,9 +156,7 @@
                             <td width="280" height="60" align="center">
                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
             font-size: 24px;width:280px;height:60px;text-transform: none"
-                                        onclick="document.getElementById('imain').src='revise.php';" id="username_menu">
-                                    username
-                                </button>
+                                        onclick="document.getElementById('imain').src='revise.php';" id="username_menu"></button>
                                 </a>
                             </td>
                         </tr>
@@ -158,15 +165,6 @@
                             <td width="280" height="60" align="center">
                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
             font-size: 24px;width:280px;height:60px;" onclick="location.href='index.php';">登出書城
-                                </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr background="source/Rectangle 2.png" style="background-repeat: no-repeat;
-			background-size:100% 100%;">
-                            <td width="280" height="60" align="center">
-                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #FFFFFF;
-            font-size: 24px;width:280px;height:60px;" onclick="document.getElementById('imain').src='https://lin.ee/IorDvpz'">LINE真人客服
                                 </button>
                                 </a>
                             </td>

@@ -27,16 +27,17 @@
     </style>
     <?php
     if ($_COOKIE["passed"]=="guest"){
-        //header("location:login.php");
-       // exit();
        }
     else{
         if($_COOKIE["passed"]=="TRUE"){
-
         }else {
             header("location:operation_failed.php");
             exit();
         }
+    }
+    $ip= $_SERVER['REMOTE_ADDR'];
+    if($ip=="::1"){
+        $ip="ngrok 或 localhost";
     }
     ?>
 </head>
@@ -67,9 +68,8 @@ if ($_COOKIE["passed"] == "TRUE") {
     $account = $_POST["account"];
     $password = $_POST["password"];
 
-
-
-
+    date_default_timezone_set('Asia/Taipei');
+    $time = date('Y/m/d H:i:s');
     require_once("dbtools.inc.php");
     header("Content-type: text/html; charset=utf-8");
 // 建立資料連接
@@ -94,12 +94,15 @@ document.getElementById('card_button').innerHTML = `<a class='mdl-button mdl-but
     } else { // 如果帳號密碼正確
         // 取得 id 欄位
         $id = mysqli_fetch_object($result)->account;
-
-        // 釋放 $result 佔用的記憶體
-        mysqli_free_result($result);
-
-        // 關閉資料連接
-        mysqli_close($link);
+        $sql = "SELECT * FROM user_data WHERE account = '$id'";
+        $result = execute_sql($link, "papaya", $sql);
+        while($row=mysqli_fetch_assoc($result)){
+            $login_history_1 = $row["login1"];
+            $login_history_2 = $row["login2"];
+            $login_history_3 = $row["login3"];
+        }
+        $sql = "UPDATE user_data SET login1 = '$time . '，來自' . $ip ', login2 ='$login_history_1',login3='$login_history_2' WHERE account='$id'";
+        $result = execute_sql($link, "papaya", $sql);
 
         // 將使用者資料加入 cookies
         setcookie("id", $id);
@@ -117,11 +120,6 @@ if (screen.width >= screen.height) {
 
 <iframe id="ifttt" style="visibility: hidden" width="0px" height="0px"></iframe>
 <script>
-    <?php
-    $ip= $_SERVER['REMOTE_ADDR'];
-    if($ip=="::1"){
-        $ip="ngrok 或 localhost";
-    }?>
     let message = "<?php echo $id . " 您好<br>您已經成功的登入本系統。<br>登入IP: ".$ip;?>"
     document.getElementById("card_message").innerHTML = message;
     if (screen.width >= screen.height) {

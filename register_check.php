@@ -80,6 +80,15 @@ document.getElementById("card_button").innerHTML = `<button class="mdl-button md
                             require_once("dbtools.inc.php");
                             header("Content-type: text/html; charset=utf-8");
                             $link = create_connection();
+
+                            //隨機取數
+                            $seed = time();// 使用时间作为种子源
+                            srand($seed);// 播下随机数发生器种子
+                            $line_user_key = rand(1,100000000000000000);// 根据种子生成 0~32768 之间的随机数。如果 $seed 值固定，则生成的随机数也不变
+                            date_default_timezone_set('Asia/Taipei');
+                            $time = date('Y/m/d H:i:s');
+
+
 //    $host = 'localhost';
 //    $dbuser = 'root';
 //    $dbpassword = '';
@@ -99,7 +108,7 @@ document.getElementById("card_button").innerHTML = `<button class="mdl-button md
 
                             // 如果帳號無人使用
                             if (mysqli_num_rows($result) == 0) {
-                                $sql = "INSERT INTO user_data (account, password, name, sex, phone, address) VALUES ('$account','$password','$name' ,'$sex','$phone','$address')";
+                                $sql = "INSERT INTO user_data (account, password, name, sex, phone, address, line_user_key,login1,login2,login3) VALUES ('$account','$password','$name' ,'$sex','$phone','$address','$line_user_key','','','')";
                                 $result = mysqli_query($link, $sql);
                             } else {
                                 echo '<script>

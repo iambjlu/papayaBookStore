@@ -49,7 +49,8 @@
 </head>
 
 <body onload="AutoOrientate()"><center>
-<h3 align="center">木瓜會員登入</h3><br>
+<h3 align="center">木瓜會員登入</h3>
+    <span>[公告] 本網站隨時可能更新網址，請<a href="https://lin.ee/IorDvpz">加入LINE好友</a>獲得詳細資訊。</span><br><br>
 
     <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
         <div class="mdl-snackbar__text"></div>

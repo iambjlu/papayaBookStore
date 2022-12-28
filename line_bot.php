@@ -1,6 +1,5 @@
 <?php
 date_default_timezone_set("Asia/Taipei"); //設定時區為台北時區
-
 require_once('LINEBotTiny.php');
 
 //------資料庫撈Token和Secret
@@ -36,9 +35,9 @@ if ($config['Channel']['Token'] == null || $config['Channel']['Secret'] == null)
 //; Line Bot
 //; 官方文檔：https://developers.line.biz/en/reference/messaging-api/
 //[Channel]
-//; 請在雙引號內輸入您的 Line Bot "Channel access token"
+//; 請在雙引號內傳送您的 Line Bot "Channel access token"
 //Token = ""
-//; 請在雙引號內輸入您的 Line Bot "Channel secret"
+//; 請在雙引號內傳送您的 Line Bot "Channel secret"
 //Secret = ""
 //';
 //    fwrite($configFile, $configFileContent); //建立文件並寫入
@@ -47,8 +46,13 @@ if ($config['Channel']['Token'] == null || $config['Channel']['Secret'] == null)
 //}
 $message = null;
 $event = null;
-$status = "none";
+
+require_once("dbtools.inc.php");
+header("Content-type: text/html; charset=utf-8");
+// 建立資料連接
+$link = create_connection();
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
         case 'message': //訊息觸發
@@ -64,109 +68,138 @@ foreach ($client->parseEvents() as $event) {
 //                    require_once('includes/sticker.php'); //Type: Sticker
 //                    require_once('includes/imagemap.php'); //Type: Imagemap
 //                    require_once('includes/template.php'); //Type: Template
-                    switch ($status) {
-                        case'none':
-                            switch ($message['text']) {
 
-                                case '選單':
-                                    $client->replyMessage(array(
-                                        'replyToken' => $event['replyToken'],
-                                        'messages' => array(
-                                            array(
-                                                'type' => 'text',
-                                                'text' => '您好，歡迎使用木瓜書城官方帳號
-請輸入文字進行操作:
-1) 綁定木瓜書城帳號
-2) 近三筆登入紀錄
-3) 查詢近三筆訂單
-4) 前往書城首頁(網址可能隨時更新)
-5) 轉接Messenger真人客服
+                    switch ($message['text']) {
 
-輸入[選單]可隨時呼叫此選單。')
+                        case '選單':
+                            $client->replyMessage(array(
+                                'replyToken' => $event['replyToken'],
+                                'messages' => array(
+                                    array(
+                                        'type' => 'text',
+                                        'text' => "$menu")
+                                )
+                            ));
+                            break;
+
+                        default:
+                            $got_msg = $message['text'];
+                            require_once("dbtools.inc.php");
+                            header("Content-type: text/html; charset=utf-8");
+                            $link = create_connection();
+                            $sql = "SELECT * FROM user_data Where line_user_key = '$got_msg'";
+                            $result = execute_sql($link, "papaya", $sql);
+                            if (mysqli_num_rows($result) == 0) {
+                                mysqli_free_result($result);
+                                mysqli_close($link);
+
+                                $client->replyMessage(array(
+                                    'replyToken' => $event['replyToken'],
+                                    'messages' => array(
+                                        array(
+                                            'type' => 'text', //訊息類型 (文字)
+                                            'text' => "很抱歉，此訊息無效。
+傳送[選單]以獲得功能說明
+或是前往木瓜書城官網:
+$website" //回覆訊息
                                         )
-                                    ));
-                                    break;
+                                    )
+                                ));
 
-                                case '1':
-                                    $status = "account";
+                            } else {
+                                $id = mysqli_fetch_object($result)->account;
+                                $sql = "SELECT * FROM order_data WHERE account = '$id' ORDER BY time DESC";
+                                $result = execute_sql($link, "papaya", $sql);
+                                if (mysqli_num_rows($result) == 0) {
+                                    $order="查無訂單。
+歡迎到書城網站下單";
+                                }else{
+                                    $order_n= mysqli_fetch_object($result)->order_number;
+                                    $sql = "SELECT * FROM order_data WHERE order_number = '$order_n'";
+                                    $result = execute_sql($link, "papaya", $sql);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $id = $row["account"];
+                                        $name = $row["name"];
+                                        $phone = $row["phone"];
+                                        $address = $row["address"];
+                                        $sex=$row["sex"];
+                                        $payment_method=$row["payment_method"];
+                                        $tcount=$row["tcount"];
+                                        $total=$row["total"];
+                                        $order="訂單隨機碼:
+$order_n
+ 
+收件人:
+$name $sex
+ 
+電話:
+$phone
+ 
+收件地址:
+$address
+
+付款方式: 
+$payment_method
+
+訂單金額:
+$tcount 本書 / 總金額 $total 元";
+                                }
+
+                                    $sql = "SELECT * FROM user_data WHERE account = '$id'";
+                                    $result = execute_sql($link, "papaya", $sql);
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        $login1 = $row["login1"];
+                                        $login2= $row["login2"];
+                                        $login3=$row["login3"];
+
+
+
+                                    }
+
+                                    $message="👋 $id 您好
+歡迎使用木瓜書城LINE查詢系統
+
+————————————                                    
+🌏 網站最近三筆登入資料
+————————————
+$login_history
+
+
+————————————                              
+📝 最近一筆訂單資料
+————————————
+$order
+
+
+————————————
+🔔 貼心提醒
+————————————
+- 資料以書城網站為準。
+- 請時常更換密碼，保持帳號安全。
+- 您可以在書城網站修改資料或密碼。
+- 傳送 [選單] 以獲得功能說明和書城網址
+- 重新傳送秘密通行碼，可以重新查詢最新資料
+$website";
+
                                     $client->replyMessage(array(
                                         'replyToken' => $event['replyToken'],
                                         'messages' => array(
                                             array(
                                                 'type' => 'text', //訊息類型 (文字)
-                                                'text' => '請輸入帳號。
-如欲取消，請輸入取消。' //回覆訊息
+                                                'text' => $message //回覆訊息
                                             )
                                         )
                                     ));
-                                    $status = "password";
-                                    break;
+                                }
 
-                                case '2':
-                                    $status = "account";
-                                    $client->replyMessage(array(
-                                        'replyToken' => $event['replyToken'],
-                                        'messages' => array(
-                                            array(
-                                                'type' => 'text', //訊息類型 (文字)
-                                                'text' => '請輸入帳號。
-如欲取消，請輸入取消。' //回覆訊息
-                                            )
-                                        )
-                                    ));
-                                    $status = "password";
-                                    break;
-
-                                default:
-                                    $client->replyMessage(array(
-                                        'replyToken' => $event['replyToken'],
-                                        'messages' => array(
-                                            array(
-                                                'type' => 'text', //訊息類型 (文字)
-                                                'text' => '哈囉。' //回覆訊息
-                                            )
-                                        )
-                                    ));
-                                    break;
                             }
                             break;
 
-
-                        default:
-                            //error_log("Unsupporeted message type: " . $message['type']);
-                            break;
                     }
-                case 'account':
-                    $status = "password";
-                    $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text', //訊息類型 (文字)
-                                'text' => '請輸入密碼。
-如欲取消，請輸入取消。' //回覆訊息
-                            )
-                        )
-                    ));
-                    $status = "password";
-                    break;
 
-                case 'password':
-                    $status = "password";
-                    $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text', //訊息類型 (文字)
-                                'text' => '請輸入密碼。
-如欲取消，請輸入取消。' //回覆訊息
-                            )
-                        )
-                    ));
-                    $status = "password";
-                    break;
 
                 default:
+                    //error_log("Unsupporeted message type: " . $message['type']);
                     break;
             }
             break;
@@ -179,10 +212,7 @@ foreach ($client->parseEvents() as $event) {
                 'messages' => array(
                     array(
                         'type' => 'text',
-                        'text' => '您好，這是一個範例 Bot OuO
-範例程式開源至 GitHub (包含教學)：
-https://github.com/GoneTone/line-example-bot-php'
-                    )
+                        'text' => "$menu")
                 )
             ));
             break;
@@ -192,9 +222,8 @@ https://github.com/GoneTone/line-example-bot-php'
                 'messages' => array(
                     array(
                         'type' => 'text',
-                        'text' => '大家好，這是一個範例 Bot OuO
-範例程式開源至 GitHub (包含教學)：
-https://github.com/GoneTone/line-example-bot-php'
+                        'text' => "大家好，歡迎使用木瓜書城官方帳號
+木瓜書城最新的網址為 $website"
                     )
                 )
             ));
