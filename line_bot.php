@@ -161,9 +161,6 @@ $tcount 本書 / 總金額 $total 元";
                                         $login1 = $row["login1"];
                                         $login2= $row["login2"];
                                         $login3=$row["login3"];
-
-
-
                                     }
 
                                     $message="👋 $id 您好
@@ -172,7 +169,9 @@ $tcount 本書 / 總金額 $total 元";
 ————————————                                    
 🌏 網站最近三筆登入資料
 ————————————
-$login_history
+$login1;
+$login2;
+$login3;
 
 
 ————————————                              
