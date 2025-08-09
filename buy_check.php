@@ -183,11 +183,8 @@ if ($_POST["T1"]=="" || $_POST["T2"]=="" || $_POST["s"]=="no"){
     srand($seed);// 播下随机数发生器种子
     $order_number = rand();// 根据种子生成 0~32768 之间的随机数。如果 $seed 值固定，则生成的随机数也不变
 
-    $host = 'localhost';
-    $dbuser = 'root';
-    $dbpassword = '';
-    $dbname = 'papaya';
-    $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
+require_once("dbtools.inc.php");
+$link = create_connection();
 //    if($link){
 //        mysqli_query($link,'SET NAMES uff8');
 //        echo "正確連接資料庫";
